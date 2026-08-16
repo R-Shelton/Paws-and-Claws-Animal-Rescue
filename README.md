@@ -5,10 +5,6 @@ animal rescue shelter. The site gives the shelter an online presence to
 showcase adoptable animals, share their story, accept donations, and recruit
 volunteers.
 
-This project is a Portfolio of Evidence (PoE) submission for **WEDE5020**,
-built from scratch in plain **HTML, CSS, and JavaScript** — no frameworks or
-libraries — and developed to match a set of provided wireframes.
-
 ## Features
 
 - **Home** — introduction, adoption/donation calls to action, shelter stats,
@@ -23,10 +19,10 @@ libraries — and developed to match a set of provided wireframes.
 
 The build is split into three parts, developed in stages:
 
-- `Part 1/` — HTML structure and content
-- `Part 2/` — CSS styling
-- `Part 3/` — JavaScript interactivity (e.g. dynamically rendered animal
-  listings, form handling)
+- `Part 1` — HTML structure and content, will be the first couple of commits.
+- `Part 2` — CSS styling, will follow part 1's completion.
+- `Part 3` — JavaScript interactivity (e.g. dynamically rendered animal
+  listings, form handling), the final part, post CSS.
 
 ## Tech Stack
 
