@@ -15,9 +15,9 @@ volunteers.
 The goals for the website would be to increase leads and expand reach for both donors and adoptions, allowing potential donors or volunteers to find the business. Also to increase consumer coverage. This would allow more traffic into the site, boosting the chances of adoption and donation. 
 
 Key performance indicators would be:
-•	Website visit/traffic increasing adoption rates.
-•	Influx of donations and volunteers.
-•	More consumer outreach, both for information and for reporting MIA animals.
+-	Website visit/traffic increasing adoption rates.
+-	Influx of donations and volunteers.
+-	More consumer outreach, both for information and for reporting MIA animals.
 
 
 ## Features
@@ -55,11 +55,11 @@ The build is split into three parts, developed in stages:
 
 ## References
 
-•	Hostinger, 2026. 'What makes a good website? 15 characteristics to stand out', Hostinger Tutorials. [online] Available at: https://www.hostinger.com/tutorials/what-makes-a-good-website/ [Accessed: 9 August 2026].
-•	New Perspective Design, 2026. 'What does a website cost in South Africa? [2026 price guide]', New Perspective Design. [online] Available at: < https://www.newperspectivestudio.co.za/wp/what-is-the-cost-of-creating-a-website-in-south-africa/> [Accessed: 9 August 2026].
-•	Ashwin, S., 2026. 'How much is hosting in 2026', HOSTAFRICA. [online] Available at: <https://hostafrica.co.za/blog/hosting/how-much-is-it-to-host-a-website/> [Accessed: 9 August 2026].
-•	Moyo, B., 2026. 'Website maintenance costs in South Africa', Symaxx Digital. [online] Available at: <https://symaxx.com/blog/website-maintenance-costs-in-south-africa> [Accessed: 9 August 2026].
-•	Coolors, 2026. Colour palette FFDCC2-522500. [online] Available at: <https://coolors.co/palette/ffdcc2-ffd1ad-ffc599-eda268-da7e37-c06722-a85311-8f3e00-713200-522500> [Accessed 9 August 2026].
-•	Google Fonts, 2026. Cause. [online] Available at: <https://fonts.google.com/specimen/Cause> [Accessed 9 August 2026].
-•	Google Fonts, 2026. Elms Sans. [online] Available at: <https://fonts.google.com/specimen/Elms+Sans> [Accessed 9 August 2026].
-•	The Independent Institute of Education, 2026. Web Development (Introduction) Module Manual. First edition published 2012. Johannesburg: The Independent Institute of Education.
+-	Hostinger, 2026. 'What makes a good website? 15 characteristics to stand out', Hostinger Tutorials. [online] Available at: https://www.hostinger.com/tutorials/what-makes-a-good-website/ [Accessed: 9 August 2026].
+-	New Perspective Design, 2026. 'What does a website cost in South Africa? [2026 price guide]', New Perspective Design. [online] Available at: < https://www.newperspectivestudio.co.za/wp/what-is-the-cost-of-creating-a-website-in-south-africa/> [Accessed: 9 August 2026].
+-	Ashwin, S., 2026. 'How much is hosting in 2026', HOSTAFRICA. [online] Available at: <https://hostafrica.co.za/blog/hosting/how-much-is-it-to-host-a-website/> [Accessed: 9 August 2026]
+-	Moyo, B., 2026. 'Website maintenance costs in South Africa', Symaxx Digital. [online] Available at: <https://symaxx.com/blog/website-maintenance-costs-in-south-africa> [Accessed: 9 August 2026].
+-	Coolors, 2026. Colour palette FFDCC2-522500. [online] Available at: <https://coolors.co/palette/ffdcc2-ffd1ad-ffc599-eda268-da7e37-c06722-a85311-8f3e00-713200-522500> [Accessed 9 August 2026].
+-	Google Fonts, 2026. Cause. [online] Available at: <https://fonts.google.com/specimen/Cause> [Accessed 9 August 2026].
+-	Google Fonts, 2026. Elms Sans. [online] Available at: <https://fonts.google.com/specimen/Elms+Sans> [Accessed 9 August 2026].
+-	The Independent Institute of Education, 2026. Web Development (Introduction) Module Manual. First edition published 2012. Johannesburg: The Independent Institute of Education.
