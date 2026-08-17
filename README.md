@@ -1,4 +1,4 @@
-<img width="1516" height="363" alt="image" src="https://github.com/user-attachments/assets/1e6cff68-c493-4e6d-a999-f484fd674cea" /># Paws & Claws Animal Rescue
+# Paws & Claws Animal Rescue
 
 ## Student Information
 
