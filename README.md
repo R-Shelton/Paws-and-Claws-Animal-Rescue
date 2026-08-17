@@ -1,4 +1,4 @@
-# Paws & Claws Animal Rescue
+<img width="1516" height="363" alt="image" src="https://github.com/user-attachments/assets/1e6cff68-c493-4e6d-a999-f484fd674cea" /># Paws & Claws Animal Rescue
 
 ## Student Information
 
@@ -34,7 +34,9 @@ Key performance indicators would be:
 
 As of 17/08/2026, the timeline is as follows:
 
-![Image](image.png)
+
+<img width="1503" height="544" alt="image" src="https://github.com/user-attachments/assets/9eb6689e-bb2f-4af7-a0f6-a87537f44658" />
+
 
 ## Project Structure
 
