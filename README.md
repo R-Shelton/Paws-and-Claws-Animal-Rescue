@@ -63,4 +63,7 @@ The build is split into three parts, developed in stages:
 -	Google Fonts, 2026. Cause. [online] Available at: <https://fonts.google.com/specimen/Cause> [Accessed 9 August 2026].
 -	Google Fonts, 2026. Elms Sans. [online] Available at: <https://fonts.google.com/specimen/Elms+Sans> [Accessed 9 August 2026].
 -	The Independent Institute of Education, 2026. Web Development (Introduction) Module Manual. First edition published 2012. Johannesburg: The Independent Institute of Education.
-- All images used in this project are sourced from Adobe Stock and are used under Adobe Stock's free licence agreement for educational purposes. Please see the attached reference to the policy: https://stock.adobe.com/license-terms
+- Pick n Pay, 2023. Pick n Pay logo. [image] Cape Town: Pick n Pay Stores Limited.
+- SPCA, 2023. SPCA logo. [image] Kempton Park: National Council of SPCAs.
+- Animal Rescue Organisation, 2023. ARO logo. [image] Cape Town: Animal Rescue Organisation.
+- All animal images used in this project are sourced from Adobe Stock and are used under Adobe Stock's free licence agreement for educational purposes. Please see the attached reference to the policy: https://stock.adobe.com/license-terms
