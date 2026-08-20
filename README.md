@@ -20,13 +20,13 @@ Key performance indicators would be:
 -	More consumer outreach, both for information and for reporting MIA animals.
 
 
-## Features
+## Features/Web pages'
 
 - **Home** — introduction, adoption/donation calls to action, shelter stats,
   urgent foster listings, and adopter success stories ("Happy Tails")
 - **Adopt** — browse animals currently available for adoption
 - **About** — the shelter's background and mission
-- **Donate** — support the shelter's rescue work
+- **Donate** — support the shelter's rescue work, used to give donations to the company.
 - **Contact** — get in touch with the shelter
 - **Volunteer sign-up** — email opt-in for people wanting to get involved
 
