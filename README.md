@@ -104,6 +104,19 @@ All notable changes to this project are listed here, newest first. The format is
 - Skeleton files and the base structure of the home page.
 - HTML markup for the Adopt/Animals and Animal Detail pages, with comments noting the planned dynamic loading of animals from JSON storage.
 
+### 2026-09-22 (Part 2)
+
+#### Added
+
+- `style.css` with mobile-first, responsive styles for all pages.
+- Hamburger menu for mobile navigation on the home page.
+- Current-page tracker across all pages.
+
+#### Changed
+
+- Page markup updated across the site to support the new styles.
+- Animal images temporarily default to a single placeholder image (Milo); Part 3 will show each animal's own image.
+
 ## References
 
 -	Hostinger, 2026. 'What makes a good website? 15 characteristics to stand out', Hostinger Tutorials. [online] Available at: https://www.hostinger.com/tutorials/what-makes-a-good-website/ [Accessed: 9 August 2026].
