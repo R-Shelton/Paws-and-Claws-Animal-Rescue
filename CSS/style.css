@@ -1,0 +1,1216 @@
+/* ==========================================================================
+   Paws & Claws Animal Rescue: site stylesheet (WEDE5020 PoE, Part 2)
+
+   Implements the 'a' variant of each page in "Paws and Claws Wireframes":
+     Home (index.html)            Adopt list (animals.html)
+     Animal detail                About
+     Contact                      Donate: no wireframe, reuses the patterns
+
+   How the wireframe maps to CSS
+   - Mobile-first. Base rules implement the mobile frame; the desktop frame
+     is layered on from 56rem (896px). Below that the header collapses to
+     the hamburger menu. (Not 768px: the full desktop header needs ~830px.)
+   - Scale. The 420px desktop frame stands in for a ~1200px page, so
+     wireframe spacing is multiplied by ~2.8 (see --space-*). Type scales
+     less, so body copy stays at a readable 16px (see --text-*).
+   - Colour. Everything comes from the README palette (Coolors FFDCC2 to
+     522500), plus white and one pale tint of it. The wireframe's greys and
+     orange are mapped to palette roles in section 1.
+   - Bands. As in the wireframe, each section's rule runs edge to edge while
+     its content is centred within --content-max (see --bleed-pad).
+
+   Contents
+     1. Design tokens            7. Adopt list
+     2. Base                     8. Animal detail
+     3. Shared components        9. About
+     4. Header & navigation     10. Contact
+     5. Footer                  11. Donate
+     6. Home
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Design tokens
+   ========================================================================== */
+
+:root {
+    /* Brand palette: Coolors FFDCC2 to 522500 (README references), light to dark */
+    --brand-50: #ffdcc2;
+    --brand-100: #ffd1ad;
+    --brand-200: #ffc599;
+    --brand-300: #eda268;
+    --brand-400: #da7e37;
+    --brand-500: #c06722;
+    --brand-600: #a85311;
+    --brand-700: #8f3e00;
+    --brand-800: #713200;
+    --brand-900: #522500;
+
+    /* Colour roles, each noting the wireframe colour it replaces. Every text
+       and button pairing below meets WCAG AA contrast (4.5:1 or better). */
+    --color-bg: #fff8f3;                    /* wf #fdfcf9 paper: brand-50 at 20% on white */
+    --color-surface: #ffffff;               /* form fields, logo tiles */
+    --color-text: var(--brand-900);         /* wf #1a1a1a ink */
+    --color-text-muted: var(--brand-700);   /* wf #6b6659 secondary copy */
+    --color-label: var(--brand-600);        /* wf #8f8a7c small-caps labels */
+    --color-border: var(--brand-900);       /* wf #1a1a1a outlines */
+    --color-accent: var(--brand-600);       /* wf #d9603b filled buttons */
+    --color-accent-hover: var(--brand-700);
+    --color-on-accent: #ffffff;
+    --color-tint: var(--brand-50);          /* wf #f3ede3 tinted pills, hover fills */
+    --color-placeholder: var(--brand-100);  /* wf hatched photo boxes; shows while images load */
+    --color-focus: var(--brand-500);
+
+    /* Typography: the two Google Fonts linked in every page's <head> */
+    --font-heading: "Elms Sans", system-ui, sans-serif;
+    --font-body: "Cause", system-ui, sans-serif;
+
+    --text-xs: 0.875rem;                                     /* wf 8px: captions, pills, footer */
+    --text-sm: 1rem;                                         /* wf 9px: body, nav, labels */
+    --text-md: 1.125rem;                                     /* wf 10px: CTA buttons */
+    --text-lg: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);       /* wf 13px: page titles */
+    --text-xl: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);        /* wf 14px: hero quote, animal name */
+    --text-logo: clamp(1.125rem, 0.9rem + 0.9vw, 1.625rem);  /* wf 13px bold, sized for the long name */
+
+    /* Spacing: wireframe px x ~2.8 */
+    --space-3xs: 0.25rem;  /* wf 1px */
+    --space-2xs: 0.5rem;   /* wf 2-3px */
+    --space-xs: 0.75rem;   /* wf 4px */
+    --space-sm: 1rem;      /* wf 5-6px */
+    --space-md: 1.375rem;  /* wf 7-8px */
+    --space-lg: 1.75rem;   /* wf 10px */
+    --space-xl: 2.5rem;    /* wf 14-16px */
+
+    /* Rules and corners */
+    --border-thick: 3px;   /* wf 2px: header rule */
+    --border: 2px;         /* wf 1.5px: section rules, cards, buttons */
+    --border-thin: 1px;    /* wf 1px: row rules, small thumbnails, pills */
+    --radius: 0.5rem;      /* wf 3px: buttons, inputs */
+    --radius-pill: 999px;  /* wf 8px on the tiny pills, i.e. fully rounded */
+
+    /* Layout */
+    --content-max: 75rem;
+    --gutter: clamp(1rem, 3vw, 1.75rem);  /* wf 10px desktop, 5-7px mobile */
+    /* Inline padding for full-bleed bands: at least the gutter, and on wide
+       screens enough to hold the content to --content-max. The 100% resolves
+       against whichever element uses it. */
+    --bleed-pad: max(var(--gutter), (100% - var(--content-max)) / 2);
+}
+
+
+/* ==========================================================================
+   2. Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Keep the hidden attribute authoritative even if a class sets display
+   (index.html's volunteer message stays hidden until Part 3 reveals it). */
+[hidden] {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   3. Shared components
+   ========================================================================== */
+
+/* Section labels: the wireframe's small grey caps ("URGENT FOSTERS NEEDED"). */
+.urgent-fosters-title,
+.happy-tails-title,
+h3.temperament-title,
+.about-partners-text {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-label);
+}
+
+/* Filled accent button: the wireframe's orange "Donate", "Adopt Now" and
+   "Send". Also works if the markup changes from <button> to <a>. */
+.donate-button,
+.adopt-button,
+.contact-button {
+    display: inline-block;
+    padding: var(--space-2xs) var(--space-md);  /* wf 3px 8px */
+    border: var(--border) solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+}
+
+.donate-button:hover,
+.adopt-button:hover,
+.contact-button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* Outline button: the wireframe's "Join & volunteer". Slightly narrower on
+   phones so the email field beside it has room; desktop restores wf 8px. */
+.volunteer-button {
+    padding: var(--space-xs) var(--space-sm);  /* wf 4px 8px, narrowed on phones */
+    border: var(--border) solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: transparent;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    transition: background-color 150ms ease;
+}
+
+.volunteer-button:hover {
+    background-color: var(--color-tint);
+}
+
+/* Text fields. Keeping them at 1rem stops iOS Safari zooming in on focus. */
+.volunteer-input,
+.contact-input {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);  /* wf 4px 6px */
+    border: var(--border) solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-surface);
+    font-size: 1rem;
+}
+
+.volunteer-input::placeholder,
+.contact-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;  /* Firefox fades placeholders by default */
+}
+
+
+/* ==========================================================================
+   4. Header & navigation (every page)
+   wf desktop: logo | links | Donate      wf mobile: logo | hamburger
+   ========================================================================== */
+
+.header {
+    border-bottom: var(--border-thick) solid var(--color-border);
+}
+
+.nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs) var(--space-md);
+    padding-block: var(--space-sm);  /* wf 6px */
+    padding-inline: var(--bleed-pad);
+}
+
+/* On phones the name wraps its own text rather than pushing the menu button
+   onto a second line; the desktop query below restores its natural width. */
+.title {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: var(--text-logo);
+    font-weight: 700;
+}
+
+.nav ul {
+    display: flex;
+    gap: var(--space-md);  /* wf 8px */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+}
+
+/* Current page, underlined in the wireframe. Marked with aria-current. */
+.nav a[aria-current="page"] {
+    text-decoration-color: var(--color-accent);
+}
+
+/* Menu toggle: a visually hidden checkbox (still keyboard-focusable) plus its
+   <label>, drawn as the wireframe's hamburger. CSS-only, so it works before
+   Part 3's JavaScript. Pages without it (animaldetail.html) keep their nav
+   visible on mobile. */
+.nav-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.nav-toggle-label {
+    flex: none;
+    width: 2.75rem;  /* 44px touch target */
+    height: 2.75rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    /* The three bars are gradient layers, so the label needs no child markup. */
+    background:
+        linear-gradient(var(--color-text), var(--color-text)) center calc(50% - 0.4375rem) / 1.375rem 2px no-repeat,
+        linear-gradient(var(--color-text), var(--color-text)) center / 1.375rem 2px no-repeat,
+        linear-gradient(var(--color-text), var(--color-text)) center calc(50% + 0.4375rem) / 1.375rem 2px no-repeat;
+}
+
+.nav-toggle:focus-visible + .nav-toggle-label {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.nav-toggle:checked + .nav-toggle-label {
+    background-color: var(--color-tint);
+}
+
+/* Mobile only: the links and Donate collapse into the menu. Scoped to
+   narrow screens so a menu left open on a phone can't leak into the desktop
+   layout if the window is resized. Written as the exact opposite of the
+   desktop query, so no in-between width (e.g. when zoomed) matches neither.
+   
+   We use rem here because it is the more accepted production practice.
+   
+   */
+@media not all and (min-width: 56rem) {
+    .nav-toggle ~ .nav,
+    .nav-toggle ~ a {
+        display: none;
+        flex-basis: 100%;
+    }
+
+    .nav-toggle:checked ~ .nav,
+    .nav-toggle:checked ~ a {
+        display: block;
+    }
+
+    .nav-toggle ~ .nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-toggle ~ .nav a {
+        display: block;
+        padding-block: var(--space-xs);
+        border-top: var(--border-thin) solid var(--color-border);
+    }
+
+    .nav-toggle ~ a .donate-button {
+        width: 100%;
+        padding-block: var(--space-xs);
+    }
+}
+
+@media (min-width: 56rem) {
+    .nav-container {
+        flex-wrap: nowrap;
+    }
+
+    .title {
+        flex: 0 1 auto;
+    }
+
+    .nav-toggle,
+    .nav-toggle-label {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   5. Footer (every page except animaldetail.html)
+   wf: link columns in a row, small muted text, rule above
+   ========================================================================== */
+
+/* The footer owns the rule above it, so the section before it never needs a
+   bottom border (this avoids a doubled line). */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md) var(--space-xl);  /* wf 14px between columns */
+    padding-block: var(--space-md);        /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-top: var(--border) solid var(--color-border);
+    font-size: var(--text-xs);             /* wf 8px */
+    color: var(--color-text-muted);        /* wf #6b6659 */
+}
+
+.footer-title,
+.visit-title,
+.socials-title {
+    margin-bottom: var(--space-3xs);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.footer-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.visit-address {
+    max-width: 24ch;
+}
+
+.footer-socials-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: var(--space-2xs);
+}
+
+.socials-title {
+    flex-basis: 100%;
+}
+
+/* wf shows the social links as outlined circles. */
+.socials-icon {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: var(--border) solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text);
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.socials-icon svg {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+.socials-icon:hover {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+}
+
+.footer-text-home,
+.footer-text-about {
+    flex-basis: 100%;
+}
+
+
+/* ==========================================================================
+   6. Home ("Hero CTA, stacked sections")
+   ========================================================================== */
+
+/* Hero: the photo fills the band and the quote and CTA sit on top of it,
+   as in the wireframe. The band is taller than the wireframe's so the photo
+   stays visible. Content is top-aligned so the animals show below the text. */
+.main-content {
+    position: relative;
+    isolation: isolate;  /* keeps the photo and wash (z-index -1) above the band's background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);              /* wf 6px */
+    min-height: clamp(22rem, 36vw, 38rem);
+    padding-block: var(--space-xl);    /* wf 16px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+    background-color: var(--color-placeholder);
+    text-align: center;
+}
+
+.main-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 42%;  /* keeps the animals' faces below the quote */
+}
+
+/* A light wash over the top of the photo keeps the ink quote readable
+   (the wireframe shows dark text on a light band). The colour is --color-bg. */
+.main-content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 248, 243, 0.92) 0%,
+        rgba(255, 248, 243, 0.75) 30%,
+        rgba(255, 248, 243, 0) 60%
+    );
+}
+
+.main-title {
+    font-size: var(--text-xl);  /* wf 14px */
+}
+
+.main-content .adopt-button {
+    padding: var(--space-xs) var(--space-lg);  /* wf 4px 10px */
+    font-size: var(--text-md);                 /* wf 10px */
+}
+
+/* Stats bar: three evenly spaced figures. */
+.stats {
+    display: flex;
+    gap: var(--space-sm);
+    padding-block: var(--space-xs);   /* wf mobile 5px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-align: center;
+}
+
+.stats span {
+    flex: 1 1 0;
+}
+
+/* Urgent fosters: label above one row of photo thumbnails. Grid rather than
+   flex-wrap so the three photos shrink to fit a phone instead of wrapping. */
+.urgent-fosters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 10.5rem));  /* wf 60 x 44 */
+    gap: var(--space-xs) var(--space-sm);  /* wf 4px under the label, 6px between photos */
+    padding-block: var(--space-md);        /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+}
+
+.urgent-fosters-title {
+    grid-column: 1 / -1;
+}
+
+.urgent-fosters-img {
+    width: 100%;
+    aspect-ratio: 15 / 11;
+    object-fit: cover;
+    border: var(--border) solid var(--color-border);
+    background-color: var(--color-placeholder);
+}
+
+/* Happy tails: two quote cards side by side; they stack when narrow. */
+.happy-tails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-sm);  /* wf 4px under the label, 6px between cards */
+    padding-block: var(--space-md);        /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+}
+
+.happy-tails-title {
+    flex-basis: 100%;
+}
+
+.review-tail {
+    flex: 1 1 16rem;
+    padding: var(--space-sm);    /* wf 5px */
+    border: var(--border) solid var(--color-border);
+    font-size: var(--text-xs);   /* wf 8px */
+}
+
+/* Volunteer sign-up: email field and outline button on one line. */
+.volunteer-section {
+    padding-block: var(--space-md);  /* wf 8px */
+    padding-inline: var(--bleed-pad);
+}
+
+.volunteer-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);  /* wf 6px */
+}
+
+/* Keeps the field and button on one line on phones (wf mobile). min-width: 0
+   overrides the input's built-in minimum width, which would force a wrap. */
+.volunteer-input {
+    flex: 1 1 8rem;
+    width: auto;
+    min-width: 0;
+}
+
+.volunteer-message {
+    margin-top: var(--space-xs);
+    font-weight: 600;
+}
+
+@media (min-width: 56rem) {
+    .stats {
+        padding-block: var(--space-md);  /* wf 8px */
+        font-size: var(--text-md);
+    }
+
+    .volunteer-button {
+        padding-inline: var(--space-md);  /* wf 8px */
+    }
+}
+
+
+/* ==========================================================================
+   7. Adopt list (2a: "Stacked rows, no filters")
+   Each .animal-card is one full-width row: photo | name + blurb | chevron.
+   ========================================================================== */
+
+.about-title {
+    padding-block: var(--space-md);  /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+}
+
+.main-title-about {
+    font-size: var(--text-lg);  /* wf 13px */
+}
+
+/* The 1fr rows above and below the text centre it against the photo. */
+.animal-card {
+    position: relative;  /* anchors the full-row link below */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto auto auto 1fr;
+    column-gap: var(--space-sm);     /* wf mobile 5px */
+    padding-block: var(--space-xs);  /* wf mobile 5px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border-thin) solid var(--color-border);
+    transition: background-color 150ms ease;
+}
+
+.animal-card:last-child {
+    border-bottom: 0;  /* the footer's rule closes the list */
+}
+
+.animal-card:hover {
+    background-color: var(--color-tint);
+}
+
+.animal-image {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: center;
+    width: 4.75rem;         /* wf mobile 26 x 22 */
+    aspect-ratio: 13 / 11;
+    object-fit: cover;
+    border: var(--border) solid var(--color-border);
+    background-color: var(--color-placeholder);
+}
+
+.animal-card .animal-info {
+    grid-column: 2;
+    grid-row: 2;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.animal-description {
+    grid-column: 2;
+    grid-row: 3;
+    font-size: var(--text-xs);       /* wf 8px */
+    color: var(--color-text-muted);  /* wf #6b6659 */
+}
+
+.view-details {
+    grid-column: 2;
+    grid-row: 4;
+    justify-self: start;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.view-details::after {
+    content: "\00A0\203A";  /* the wireframe's row chevron */
+}
+
+/* Stretch the link across the whole row so the row itself is the tap
+   target. The link text still gives it an accessible name. */
+.view-details::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.view-details:focus-visible {
+    outline: none;
+}
+
+.view-details:focus-visible::before {
+    outline: 3px solid var(--color-focus);
+    outline-offset: -3px;
+}
+
+@media (min-width: 56rem) {
+    .animal-card {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 1fr auto auto 1fr;
+        column-gap: var(--space-md);     /* wf 8px */
+        padding-block: var(--space-md);  /* wf 7px */
+    }
+
+    .animal-image {
+        width: 7.75rem;         /* wf 44 x 38 */
+        aspect-ratio: 22 / 19;
+    }
+
+    .animal-card .animal-info {
+        font-size: var(--text-md);
+    }
+
+    .view-details {
+        grid-column: 3;
+        grid-row: 1 / -1;
+        align-self: center;
+        font-size: var(--text-sm);  /* wf 9px */
+    }
+}
+
+
+/* ==========================================================================
+   8. Animal detail (3a: "Gallery top, sticky CTA bar")
+   ========================================================================== */
+
+/* Main photo: a full-bleed banner. */
+.animal-detail-image-container {
+    border-bottom: var(--border-thin) solid var(--color-border);
+    background-color: var(--color-placeholder);
+}
+
+.main-detail-image {
+    width: 100%;
+    aspect-ratio: 20 / 7;  /* wf mobile 126 x 44 */
+    object-fit: cover;
+    object-position: 50% 30%;
+}
+
+/* Thumbnail strip. */
+.animal-detail-images {
+    display: flex;
+    gap: var(--space-2xs);           /* wf mobile 2px */
+    padding-block: var(--space-xs);  /* wf mobile 4px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+}
+
+.curtain-image {
+    width: 3rem;          /* wf mobile 16 x 12 */
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: var(--border-thin) solid var(--color-border);
+    background-color: var(--color-placeholder);
+}
+
+/* Name, descriptor pills and price. The pills sit between the name and the
+   price line; flex-wrap puts each of those on its own full-width line. */
+.animal-detail-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);            /* wf 4px */
+    padding-block: var(--space-md);  /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.animal-detail-name {
+    flex-basis: 100%;
+    font-size: var(--text-xl);  /* wf 14px */
+}
+
+/* Rounded pills, used here and in the temperament section. */
+.descriptor-bubble {
+    padding: 0.125rem var(--space-sm);  /* wf 1px 6px */
+    border: var(--border-thin) solid var(--color-border);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);          /* wf 8px */
+}
+
+.animal-detail-info .animal-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.35em;
+    flex-basis: 100%;
+}
+
+/* The empty separator span, drawn as the wireframe's middle dot. */
+.detail-separator {
+    width: 0.25rem;
+    height: 0.25rem;
+    margin-inline: 0.4em;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+/* Temperament. */
+.animal-temperment-section {
+    padding-block: var(--space-md);  /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+/* The class is on both the wrapper div and the h3; only the heading needs spacing. */
+h3.temperament-title {
+    margin-bottom: var(--space-2xs);  /* wf 3px */
+}
+
+.temperament-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);  /* wf 4px */
+}
+
+.temperament-bubbles .descriptor-bubble {
+    background-color: var(--color-tint);  /* wf #f3ede3 filled pills */
+}
+
+/* Adoption steps: numbered circles over their labels. */
+.animal-adoption-steps {
+    display: flex;
+    justify-content: space-around;
+    padding-block: var(--space-sm);  /* wf 6px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+    font-size: var(--text-xs);       /* wf 8px */
+    text-align: center;
+}
+
+.application-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3xs);
+}
+
+/* The wireframe's circled digits. */
+.step-number {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: var(--border-thin) solid var(--color-border);
+    border-radius: 50%;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* Start Adoption bar. It sticks to the bottom of the viewport until the
+   page is scrolled to its natural position at the end. */
+.adopt-button-container {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+.adopt-button-container .adopt-button {
+    display: block;
+    width: 100%;
+    padding: var(--space-md) var(--gutter);  /* wf 7px 10px */
+    border: 0;
+    border-radius: 0;
+    background-color: var(--color-text);     /* wf #1a1a1a bar */
+    color: var(--color-on-accent);
+    font-size: var(--text-md);               /* wf 10px */
+}
+
+.adopt-button-container .adopt-button:hover {
+    background-color: var(--brand-800);
+}
+
+/* The bar spans the full viewport, so draw its focus ring inside it. */
+.adopt-button-container .adopt-button:focus-visible {
+    outline-offset: -6px;
+}
+
+@media (min-width: 56rem) {
+    .main-detail-image {
+        aspect-ratio: 5 / 1;  /* wf 416 x 80 */
+    }
+
+    .animal-detail-images {
+        gap: var(--space-xs);            /* wf 4px */
+        padding-block: var(--space-sm);  /* wf 5px */
+    }
+
+    .curtain-image {
+        width: 6.25rem;         /* wf 36 x 26 */
+        aspect-ratio: 18 / 13;
+    }
+}
+
+
+/* ==========================================================================
+   9. About (4a: "Story-first, photo beside")
+   ========================================================================== */
+
+/* Mobile stacks the story over the photo; desktop puts the photo at the right. */
+.about-section {
+    display: flex;
+    flex-direction: column;
+    border-bottom: var(--border) solid var(--color-border);
+}
+
+.about-description {
+    padding-block: var(--space-sm);  /* wf mobile 6px */
+    padding-inline: var(--bleed-pad);
+}
+
+.about-description-wording {
+    max-width: 60ch;
+    font-size: var(--text-md);
+}
+
+.about-image-container {
+    border-top: var(--border-thin) solid var(--color-border);
+    background-color: var(--color-placeholder);
+}
+
+.about-image {
+    width: 100%;
+    aspect-ratio: 11 / 3;      /* wf mobile 126 x 34 */
+    object-fit: cover;
+    object-position: 50% 20%;  /* keeps the puppy's face in the crop */
+    filter: grayscale(100%);   /* wf "PHOTO (b&w)" */
+}
+
+/* Stats: three evenly spaced figures. */
+.about-stat-content {
+    display: flex;
+    gap: var(--space-sm);            /* keeps long labels apart on phones */
+    padding-block: var(--space-md);  /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+    text-align: center;
+}
+
+.about-stat {
+    flex: 1 1 0;
+}
+
+.about-stat-number {
+    font-family: var(--font-heading);
+    font-size: var(--text-md);
+    font-weight: 700;
+}
+
+/* Partners: label above one row of outlined logo tiles (grid, as for the
+   home page thumbnails, so the tiles shrink rather than wrap). */
+.about-partners {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 7rem));  /* wf 40 x 24 */
+    gap: var(--space-xs) var(--space-sm);  /* wf 4px under the label, 5px between logos */
+    padding-block: var(--space-md);        /* wf 8px */
+    padding-inline: var(--bleed-pad);
+}
+
+.about-partners-text {
+    grid-column: 1 / -1;
+}
+
+.about-partner {
+    aspect-ratio: 5 / 3;
+    padding: var(--space-3xs);
+    border: var(--border-thin) solid var(--color-border);
+    background-color: var(--color-surface);  /* matches the logos' white backgrounds */
+}
+
+.partner-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (min-width: 56rem) {
+    .about-section {
+        flex-direction: row;
+    }
+
+    /* The text column keeps the page's left edge; the photo bleeds to the right. */
+    .about-description {
+        display: flex;
+        flex: 1 1 0;
+        align-items: center;
+        padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--bleed-pad);  /* wf 10px */
+    }
+
+    .about-image-container {
+        position: relative;
+        flex: 0 0 31.25%;  /* wf 130 of 416 */
+        min-height: 18rem;
+        border-top: 0;
+    }
+
+    .about-image {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        aspect-ratio: auto;
+    }
+}
+
+
+/* ==========================================================================
+   10. Contact (5a: "Form + map side-by-side")
+   ========================================================================== */
+
+.contact-title-container {
+    padding-block: var(--space-md);  /* wf 8px */
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.contact-title {
+    font-size: var(--text-lg);  /* wf 13px */
+}
+
+/* Mobile stacks form, then map and address; desktop puts them side by side. */
+.contact-contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);            /* wf 8px */
+    padding-block: var(--space-md);  /* wf 8px */
+    padding-inline: var(--bleed-pad);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);  /* wf 5px */
+}
+
+textarea.contact-input {
+    min-height: 7.5rem;  /* wf message box is roughly twice the input height */
+    resize: vertical;
+}
+
+.contact-button {
+    padding: var(--space-xs) var(--space-md);  /* wf 4px 8px */
+}
+
+.contact-map-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);  /* wf 5px */
+}
+
+.map-container {
+    border: var(--border) solid var(--color-border);
+    background-color: var(--color-placeholder);
+}
+
+.map {
+    width: 100%;
+    aspect-ratio: 16 / 5;  /* wf 194 x 60 */
+    object-fit: cover;
+}
+
+/* Address lines. The pin icon shares the first line with the address; the
+   phone and email icons come from CSS, matching the wireframe. */
+.contact-address {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.4em;
+    font-size: var(--text-xs);  /* wf 8px */
+}
+
+.contact-address p {
+    flex-basis: 100%;
+}
+
+.contact-address .address-text {
+    flex: 1 1 0;
+}
+
+.address-phone::before,
+.address-email::before {
+    margin-right: 0.4em;
+}
+
+/* \FE0E asks for the plain text glyph (drawn in the ink colour) rather than
+   a colour emoji, which varies by platform and is too pale on Windows. */
+.address-phone::before {
+    content: "\260E\FE0E";
+}
+
+.address-email::before {
+    content: "\2709\FE0E";
+}
+
+@media (min-width: 56rem) {
+    .contact-contact-container {
+        flex-direction: row;
+    }
+
+    .contact-info,
+    .contact-map-section {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+}
+
+
+/* ==========================================================================
+   11. Donate (no wireframe; built from the patterns above)
+   ========================================================================== */
+
+.donate-title-container {
+    display: grid;
+    gap: var(--space-2xs);
+    padding-block: var(--space-md);
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.donate-title {
+    font-size: var(--text-lg);
+}
+
+.donate-description {
+    color: var(--color-text-muted);
+}
+
+/* Amount pills, monthly option and the main CTA. */
+.donate-amount-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding-block: var(--space-md);
+    padding-inline: var(--bleed-pad);
+    border-bottom: var(--border) solid var(--color-border);
+}
+
+.donate-amount-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.donate-amount-bubble {
+    min-width: 6rem;
+    padding: var(--space-2xs) var(--space-md);
+    border: var(--border) solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: background-color 150ms ease;
+}
+
+.donate-amount-bubble:hover {
+    background-color: var(--color-tint);
+}
+
+.donate-recurring-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    cursor: pointer;
+}
+
+.donate-recurring-checkbox {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin: 0;
+    accent-color: var(--color-accent);
+}
+
+.donate-button-container .donate-button {
+    padding: var(--space-xs) var(--space-lg);
+    font-size: var(--text-md);
+}
+
+/* Where the money goes: tinted tiles that wrap on narrow screens. */
+.donate-reassurance-container {
+    display: grid;
+    gap: var(--space-xs);
+    padding-block: var(--space-md);
+    padding-inline: var(--bleed-pad);
+}
+
+.donate-reassurance-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.donate-reassurance-item {
+    flex: 1 1 10rem;
+    padding: var(--space-sm);
+    border: var(--border) solid var(--color-border);
+    background-color: var(--color-tint);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-align: center;
+}
