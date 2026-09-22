@@ -53,6 +53,57 @@ The build is split into three parts, developed in stages:
 - CSS3
 - Vanilla JavaScript (no frameworks/libraries)
 
+## Changelog
+
+All notable changes to this project are listed here, newest first. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), with related commits grouped and merge commits omitted. See the [full commit history](https://github.com/R-Shelton/Paws-and-Claws-Animal-Rescue/commits/main/) for every individual commit.
+
+### 2026-08-20 (Part 1)
+
+#### Added
+
+- Font imports in the `<head>` of every page.
+- README: references for the partner organisations, and for Adobe Stock as the source of all site images.
+
+#### Changed
+
+- README: content expanded and tidied up.
+
+### 2026-08-17 (Part 1)
+
+#### Added
+
+- `images` folder, with images for all `<img>` tags, including the main image, new partner images on the About page, and a placeholder map image on the Contact page.
+- Comments across all source code.
+- README: additional project information and references to the sources used.
+
+#### Changed
+
+- Footer social icons replaced with inline SVGs of each platform.
+- README: header, formatting and images reworked; references revised and de-duplicated.
+
+### 2026-08-16 (Part 1)
+
+#### Added
+
+- Temporary image tag standing in for the Contact page's Google Maps embed (planned for Part 3), with comments explaining the map section.
+
+#### Changed
+
+- HTML in `animals.html` tidied up.
+- README: updated with relevant project information; irrelevant content removed.
+
+#### Removed
+
+- Newsletter section from the footer of every page, as this shelter doesn't run one.
+
+### 2026-08-14 (Part 1)
+
+#### Added
+
+- Repository created.
+- Skeleton files and the base structure of the home page.
+- HTML markup for the Adopt/Animals and Animal Detail pages, with comments noting the planned dynamic loading of animals from JSON storage.
+
 ## References
 
 -	Hostinger, 2026. 'What makes a good website? 15 characteristics to stand out', Hostinger Tutorials. [online] Available at: https://www.hostinger.com/tutorials/what-makes-a-good-website/ [Accessed: 9 August 2026].
