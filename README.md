@@ -128,6 +128,13 @@ All notable changes to this project are listed here, newest first. The format is
 - Page markup updated across the site to support the new styles.
 - Animal images temporarily default to a single placeholder image (Milo); Part 3 will show each animal's own image.
 
+### 2026-09-22 (Part 2)
+
+#### Changed
+
+- Added responsive design screenshots to the README.
+- As of 22/09/2026, still awaiting part 1 feedback....
+  
 ## References
 
 -	Hostinger, 2026. 'What makes a good website? 15 characteristics to stand out', Hostinger Tutorials. [online] Available at: https://www.hostinger.com/tutorials/what-makes-a-good-website/ [Accessed: 9 August 2026].
