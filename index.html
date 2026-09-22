@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cause:wght@100..900&family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="CSS/style.css">
 
     <title>Paws and Claws Animal Rescue</title>
 </head>
@@ -20,9 +21,12 @@
     <header class="header">
         <div class="nav-container">
             <h1 class="title intro">Paws and Claws Animal Rescue</h1>
+            <!-- Mobile menu toggle (CSS-only): a visually hidden checkbox, with its label drawn as the hamburger icon. -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Show menu">
+            <label for="nav-toggle" class="nav-toggle-label"></label>
             <nav class="nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
                     <li><a href="pages/animals.html">Adopt</a></li>
                     <li><a href="pages/about.html">About</a></li>
                     <li><a href="pages/contact.html">Contact</a></li>
