@@ -1,10 +1,10 @@
 /* ==========================================================================
    Paws & Claws Animal Rescue: site stylesheet (WEDE5020 PoE, Part 2)
 
-   Implements the 'a' variant of each page in "Paws and Claws Wireframes":
+   Implementation of each page in "Paws and Claws Wireframes":
      Home (index.html)            Adopt list (animals.html)
      Animal detail                About
-     Contact                      Donate: no wireframe, reuses the patterns
+     Contact                      Donate
 
    How the wireframe maps to CSS
    - Mobile-first. Base rules implement the mobile frame; the desktop frame
@@ -48,49 +48,49 @@
 
     /* Colour roles, each noting the wireframe colour it replaces. Every text
        and button pairing below meets WCAG AA contrast (4.5:1 or better). */
-    --color-bg: #fff8f3;                    /* wf #fdfcf9 paper: brand-50 at 20% on white */
+    --color-bg: #fff8f3;                    /* #fdfcf9 paper: brand-50 at 20% on white */
     --color-surface: #ffffff;               /* form fields, logo tiles */
-    --color-text: var(--brand-900);         /* wf #1a1a1a ink */
-    --color-text-muted: var(--brand-700);   /* wf #6b6659 secondary copy */
-    --color-label: var(--brand-600);        /* wf #8f8a7c small-caps labels */
-    --color-border: var(--brand-900);       /* wf #1a1a1a outlines */
-    --color-accent: var(--brand-600);       /* wf #d9603b filled buttons */
+    --color-text: var(--brand-900);         /* #1a1a1a ink */
+    --color-text-muted: var(--brand-700);   /* #6b6659 secondary copy */
+    --color-label: var(--brand-600);        /* #8f8a7c small-caps labels */
+    --color-border: var(--brand-900);       /* #1a1a1a outlines */
+    --color-accent: var(--brand-600);       /* #d9603b filled buttons */
     --color-accent-hover: var(--brand-700);
     --color-on-accent: #ffffff;
-    --color-tint: var(--brand-50);          /* wf #f3ede3 tinted pills, hover fills */
-    --color-placeholder: var(--brand-100);  /* wf hatched photo boxes; shows while images load */
+    --color-tint: var(--brand-50);          /* #f3ede3 tinted pills, hover fills */
+    --color-placeholder: var(--brand-100);  /* hatched photo boxes; shows while images load */
     --color-focus: var(--brand-500);
 
     /* Typography: the two Google Fonts linked in every page's <head> */
     --font-heading: "Elms Sans", system-ui, sans-serif;
     --font-body: "Cause", system-ui, sans-serif;
 
-    --text-xs: 0.875rem;                                     /* wf 8px: captions, pills, footer */
-    --text-sm: 1rem;                                         /* wf 9px: body, nav, labels */
-    --text-md: 1.125rem;                                     /* wf 10px: CTA buttons */
-    --text-lg: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);       /* wf 13px: page titles */
-    --text-xl: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);        /* wf 14px: hero quote, animal name */
-    --text-logo: clamp(1.125rem, 0.9rem + 0.9vw, 1.625rem);  /* wf 13px bold, sized for the long name */
+    --text-xs: 0.875rem;                                     /* 8px: captions, pills, footer */
+    --text-sm: 1rem;                                         /* 9px: body, nav, labels */
+    --text-md: 1.125rem;                                     /* 10px: CTA buttons */
+    --text-lg: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);       /* 13px: page titles */
+    --text-xl: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);        /* 14px: hero quote, animal name */
+    --text-logo: clamp(1.125rem, 0.9rem + 0.9vw, 1.625rem);  /* 13px bold, sized for the long name */
 
-    /* Spacing: wireframe px x ~2.8 */
-    --space-3xs: 0.25rem;  /* wf 1px */
-    --space-2xs: 0.5rem;   /* wf 2-3px */
-    --space-xs: 0.75rem;   /* wf 4px */
-    --space-sm: 1rem;      /* wf 5-6px */
-    --space-md: 1.375rem;  /* wf 7-8px */
-    --space-lg: 1.75rem;   /* wf 10px */
-    --space-xl: 2.5rem;    /* wf 14-16px */
+    /* Spacing */
+    --space-3xs: 0.25rem;  /* 1px */
+    --space-2xs: 0.5rem;   /* 2-3px */
+    --space-xs: 0.75rem;   /* 4px */
+    --space-sm: 1rem;      /* 5-6px */
+    --space-md: 1.375rem;  /* 7-8px */
+    --space-lg: 1.75rem;   /* 10px */
+    --space-xl: 2.5rem;    /* 14-16px */
 
     /* Rules and corners */
-    --border-thick: 3px;   /* wf 2px: header rule */
-    --border: 2px;         /* wf 1.5px: section rules, cards, buttons */
-    --border-thin: 1px;    /* wf 1px: row rules, small thumbnails, pills */
-    --radius: 0.5rem;      /* wf 3px: buttons, inputs */
-    --radius-pill: 999px;  /* wf 8px on the tiny pills, i.e. fully rounded */
+    --border-thick: 3px;   /* 2px: header rule */
+    --border: 2px;         /* 1.5px: section rules, cards, buttons */
+    --border-thin: 1px;    /* 1px: row rules, small thumbnails, pills */
+    --radius: 0.5rem;      /* 3px: buttons, inputs */
+    --radius-pill: 999px;  /* 8px on the tiny pills, i.e. fully rounded */
 
     /* Layout */
     --content-max: 75rem;
-    --gutter: clamp(1rem, 3vw, 1.75rem);  /* wf 10px desktop, 5-7px mobile */
+    --gutter: clamp(1rem, 3vw, 1.75rem);  /* 10px desktop, 5-7px mobile */
     /* Inline padding for full-bleed bands: at least the gutter, and on wide
        screens enough to hold the content to --content-max. The 100% resolves
        against whichever element uses it. */
@@ -188,7 +188,7 @@ h3.temperament-title,
 .adopt-button,
 .contact-button {
     display: inline-block;
-    padding: var(--space-2xs) var(--space-md);  /* wf 3px 8px */
+    padding: var(--space-2xs) var(--space-md);  /*  3px 8px */
     border: var(--border) solid var(--color-border);
     border-radius: var(--radius);
     background-color: var(--color-accent);
@@ -208,9 +208,9 @@ h3.temperament-title,
 }
 
 /* Outline button: the wireframe's "Join & volunteer". Slightly narrower on
-   phones so the email field beside it has room; desktop restores wf 8px. */
+   phones so the email field beside it has room; desktop restores 8px. */
 .volunteer-button {
-    padding: var(--space-xs) var(--space-sm);  /* wf 4px 8px, narrowed on phones */
+    padding: var(--space-xs) var(--space-sm);  /*  4px 8px, narrowed on phones */
     border: var(--border) solid var(--color-border);
     border-radius: var(--radius);
     background-color: transparent;
@@ -228,7 +228,7 @@ h3.temperament-title,
 .volunteer-input,
 .contact-input {
     width: 100%;
-    padding: var(--space-xs) var(--space-sm);  /* wf 4px 6px */
+    padding: var(--space-xs) var(--space-sm);  /*  4px 6px */
     border: var(--border) solid var(--color-border);
     border-radius: var(--radius);
     background-color: var(--color-surface);
@@ -244,7 +244,7 @@ h3.temperament-title,
 
 /* ==========================================================================
    4. Header & navigation (every page)
-   wf desktop: logo | links | Donate      wf mobile: logo | hamburger
+   desktop: logo | links | Donate       mobile: logo | hamburger
    ========================================================================== */
 
 .header {
@@ -257,7 +257,7 @@ h3.temperament-title,
     align-items: center;
     justify-content: space-between;
     gap: var(--space-xs) var(--space-md);
-    padding-block: var(--space-sm);  /* wf 6px */
+    padding-block: var(--space-sm);  /*  6px */
     padding-inline: var(--bleed-pad);
 }
 
@@ -272,7 +272,7 @@ h3.temperament-title,
 
 .nav ul {
     display: flex;
-    gap: var(--space-md);  /* wf 8px */
+    gap: var(--space-md);  /*  8px */
     margin: 0;
     padding: 0;
     list-style: none;
@@ -385,7 +385,7 @@ h3.temperament-title,
 
 /* ==========================================================================
    5. Footer (every page except animaldetail.html)
-   wf: link columns in a row, small muted text, rule above
+    link columns in a row, small muted text, rule above
    ========================================================================== */
 
 /* The footer owns the rule above it, so the section before it never needs a
@@ -393,12 +393,12 @@ h3.temperament-title,
 .footer {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-md) var(--space-xl);  /* wf 14px between columns */
-    padding-block: var(--space-md);        /* wf 8px */
+    gap: var(--space-md) var(--space-xl);  /*  14px between columns */
+    padding-block: var(--space-md);        /*  8px */
     padding-inline: var(--bleed-pad);
     border-top: var(--border) solid var(--color-border);
-    font-size: var(--text-xs);             /* wf 8px */
-    color: var(--color-text-muted);        /* wf #6b6659 */
+    font-size: var(--text-xs);             /*  8px */
+    color: var(--color-text-muted);        /*  #6b6659 */
 }
 
 .footer-title,
@@ -439,7 +439,7 @@ h3.temperament-title,
     flex-basis: 100%;
 }
 
-/* wf shows the social links as outlined circles. */
+/*  shows the social links as outlined circles. */
 .socials-icon {
     display: grid;
     place-items: center;
@@ -480,9 +480,9 @@ h3.temperament-title,
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);              /* wf 6px */
+    gap: var(--space-sm);              /*  6px */
     min-height: clamp(22rem, 36vw, 38rem);
-    padding-block: var(--space-xl);    /* wf 16px */
+    padding-block: var(--space-xl);    /*  16px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
     background-color: var(--color-placeholder);
@@ -515,19 +515,19 @@ h3.temperament-title,
 }
 
 .main-title {
-    font-size: var(--text-xl);  /* wf 14px */
+    font-size: var(--text-xl);  /*  14px */
 }
 
 .main-content .adopt-button {
-    padding: var(--space-xs) var(--space-lg);  /* wf 4px 10px */
-    font-size: var(--text-md);                 /* wf 10px */
+    padding: var(--space-xs) var(--space-lg);  /*  4px 10px */
+    font-size: var(--text-md);                 /*  10px */
 }
 
 /* Stats bar: three evenly spaced figures. */
 .stats {
     display: flex;
     gap: var(--space-sm);
-    padding-block: var(--space-xs);   /* wf mobile 5px */
+    padding-block: var(--space-xs);   /*  mobile 5px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
     font-family: var(--font-heading);
@@ -543,9 +543,9 @@ h3.temperament-title,
    flex-wrap so the three photos shrink to fit a phone instead of wrapping. */
 .urgent-fosters {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 10.5rem));  /* wf 60 x 44 */
-    gap: var(--space-xs) var(--space-sm);  /* wf 4px under the label, 6px between photos */
-    padding-block: var(--space-md);        /* wf 8px */
+    grid-template-columns: repeat(3, minmax(0, 10.5rem));  /*  60 x 44 */
+    gap: var(--space-xs) var(--space-sm);  /*  4px under the label, 6px between photos */
+    padding-block: var(--space-md);        /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
 }
@@ -566,8 +566,8 @@ h3.temperament-title,
 .happy-tails {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs) var(--space-sm);  /* wf 4px under the label, 6px between cards */
-    padding-block: var(--space-md);        /* wf 8px */
+    gap: var(--space-xs) var(--space-sm);  /*  4px under the label, 6px between cards */
+    padding-block: var(--space-md);        /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
 }
@@ -578,24 +578,24 @@ h3.temperament-title,
 
 .review-tail {
     flex: 1 1 16rem;
-    padding: var(--space-sm);    /* wf 5px */
+    padding: var(--space-sm);    /*  5px */
     border: var(--border) solid var(--color-border);
-    font-size: var(--text-xs);   /* wf 8px */
+    font-size: var(--text-xs);   /*  8px */
 }
 
 /* Volunteer sign-up: email field and outline button on one line. */
 .volunteer-section {
-    padding-block: var(--space-md);  /* wf 8px */
+    padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
 }
 
 .volunteer-form {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-sm);  /* wf 6px */
+    gap: var(--space-sm);  /*  6px */
 }
 
-/* Keeps the field and button on one line on phones (wf mobile). min-width: 0
+/* Keeps the field and button on one line on phones ( mobile). min-width: 0
    overrides the input's built-in minimum width, which would force a wrap. */
 .volunteer-input {
     flex: 1 1 8rem;
@@ -610,29 +610,29 @@ h3.temperament-title,
 
 @media (min-width: 56rem) {
     .stats {
-        padding-block: var(--space-md);  /* wf 8px */
+        padding-block: var(--space-md);  /*  8px */
         font-size: var(--text-md);
     }
 
     .volunteer-button {
-        padding-inline: var(--space-md);  /* wf 8px */
+        padding-inline: var(--space-md);  /*  8px */
     }
 }
 
 
 /* ==========================================================================
-   7. Adopt list (2a: "Stacked rows, no filters")
+   7. Adopt list ("Stacked rows, no filters")
    Each .animal-card is one full-width row: photo | name + blurb | chevron.
    ========================================================================== */
 
 .about-title {
-    padding-block: var(--space-md);  /* wf 8px */
+    padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
 }
 
 .main-title-about {
-    font-size: var(--text-lg);  /* wf 13px */
+    font-size: var(--text-lg);  /*  13px */
 }
 
 /* The 1fr rows above and below the text centre it against the photo. */
@@ -641,8 +641,8 @@ h3.temperament-title,
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr auto auto auto 1fr;
-    column-gap: var(--space-sm);     /* wf mobile 5px */
-    padding-block: var(--space-xs);  /* wf mobile 5px */
+    column-gap: var(--space-sm);     /*  mobile 5px */
+    padding-block: var(--space-xs);  /*  mobile 5px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border-thin) solid var(--color-border);
     transition: background-color 150ms ease;
@@ -660,7 +660,7 @@ h3.temperament-title,
     grid-column: 1;
     grid-row: 1 / -1;
     align-self: center;
-    width: 4.75rem;         /* wf mobile 26 x 22 */
+    width: 4.75rem;         /*  mobile 26 x 22 */
     aspect-ratio: 13 / 11;
     object-fit: cover;
     border: var(--border) solid var(--color-border);
@@ -677,8 +677,8 @@ h3.temperament-title,
 .animal-description {
     grid-column: 2;
     grid-row: 3;
-    font-size: var(--text-xs);       /* wf 8px */
-    color: var(--color-text-muted);  /* wf #6b6659 */
+    font-size: var(--text-xs);       /*  8px */
+    color: var(--color-text-muted);  /*  #6b6659 */
 }
 
 .view-details {
@@ -715,12 +715,12 @@ h3.temperament-title,
     .animal-card {
         grid-template-columns: auto 1fr auto;
         grid-template-rows: 1fr auto auto 1fr;
-        column-gap: var(--space-md);     /* wf 8px */
-        padding-block: var(--space-md);  /* wf 7px */
+        column-gap: var(--space-md);     /*  8px */
+        padding-block: var(--space-md);  /*  7px */
     }
 
     .animal-image {
-        width: 7.75rem;         /* wf 44 x 38 */
+        width: 7.75rem;         /*  44 x 38 */
         aspect-ratio: 22 / 19;
     }
 
@@ -732,13 +732,13 @@ h3.temperament-title,
         grid-column: 3;
         grid-row: 1 / -1;
         align-self: center;
-        font-size: var(--text-sm);  /* wf 9px */
+        font-size: var(--text-sm);  /*  9px */
     }
 }
 
 
 /* ==========================================================================
-   8. Animal detail (3a: "Gallery top, sticky CTA bar")
+   8. Animal detail ("Gallery top, sticky CTA bar")
    ========================================================================== */
 
 /* Main photo: a full-bleed banner. */
@@ -749,7 +749,7 @@ h3.temperament-title,
 
 .main-detail-image {
     width: 100%;
-    aspect-ratio: 20 / 7;  /* wf mobile 126 x 44 */
+    aspect-ratio: 20 / 7;  /*  mobile 126 x 44 */
     object-fit: cover;
     object-position: 50% 30%;
 }
@@ -757,14 +757,14 @@ h3.temperament-title,
 /* Thumbnail strip. */
 .animal-detail-images {
     display: flex;
-    gap: var(--space-2xs);           /* wf mobile 2px */
-    padding-block: var(--space-xs);  /* wf mobile 4px */
+    gap: var(--space-2xs);           /*  mobile 2px */
+    padding-block: var(--space-xs);  /*  mobile 4px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
 }
 
 .curtain-image {
-    width: 3rem;          /* wf mobile 16 x 12 */
+    width: 3rem;          /*  mobile 16 x 12 */
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border: var(--border-thin) solid var(--color-border);
@@ -777,23 +777,23 @@ h3.temperament-title,
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-xs);            /* wf 4px */
-    padding-block: var(--space-md);  /* wf 8px */
+    gap: var(--space-xs);            /*  4px */
+    padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border-thin) solid var(--color-border);
 }
 
 .animal-detail-name {
     flex-basis: 100%;
-    font-size: var(--text-xl);  /* wf 14px */
+    font-size: var(--text-xl);  /*  14px */
 }
 
 /* Rounded pills, used here and in the temperament section. */
 .descriptor-bubble {
-    padding: 0.125rem var(--space-sm);  /* wf 1px 6px */
+    padding: 0.125rem var(--space-sm);  /*  1px 6px */
     border: var(--border-thin) solid var(--color-border);
     border-radius: var(--radius-pill);
-    font-size: var(--text-xs);          /* wf 8px */
+    font-size: var(--text-xs);          /*  8px */
 }
 
 .animal-detail-info .animal-info {
@@ -815,34 +815,34 @@ h3.temperament-title,
 
 /* Temperament. */
 .animal-temperment-section {
-    padding-block: var(--space-md);  /* wf 8px */
+    padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border-thin) solid var(--color-border);
 }
 
 /* The class is on both the wrapper div and the h3; only the heading needs spacing. */
 h3.temperament-title {
-    margin-bottom: var(--space-2xs);  /* wf 3px */
+    margin-bottom: var(--space-2xs);  /*  3px */
 }
 
 .temperament-bubbles {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);  /* wf 4px */
+    gap: var(--space-xs);  /*  4px */
 }
 
 .temperament-bubbles .descriptor-bubble {
-    background-color: var(--color-tint);  /* wf #f3ede3 filled pills */
+    background-color: var(--color-tint);  /*  #f3ede3 filled pills */
 }
 
 /* Adoption steps: numbered circles over their labels. */
 .animal-adoption-steps {
     display: flex;
     justify-content: space-around;
-    padding-block: var(--space-sm);  /* wf 6px */
+    padding-block: var(--space-sm);  /*  6px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
-    font-size: var(--text-xs);       /* wf 8px */
+    font-size: var(--text-xs);       /*  8px */
     text-align: center;
 }
 
@@ -876,12 +876,12 @@ h3.temperament-title {
 .adopt-button-container .adopt-button {
     display: block;
     width: 100%;
-    padding: var(--space-md) var(--gutter);  /* wf 7px 10px */
+    padding: var(--space-md) var(--gutter);  /*  7px 10px */
     border: 0;
     border-radius: 0;
-    background-color: var(--color-text);     /* wf #1a1a1a bar */
+    background-color: var(--color-text);     /*  #1a1a1a bar */
     color: var(--color-on-accent);
-    font-size: var(--text-md);               /* wf 10px */
+    font-size: var(--text-md);               /*  10px */
 }
 
 .adopt-button-container .adopt-button:hover {
@@ -895,23 +895,23 @@ h3.temperament-title {
 
 @media (min-width: 56rem) {
     .main-detail-image {
-        aspect-ratio: 5 / 1;  /* wf 416 x 80 */
+        aspect-ratio: 5 / 1;  /*  416 x 80 */
     }
 
     .animal-detail-images {
-        gap: var(--space-xs);            /* wf 4px */
-        padding-block: var(--space-sm);  /* wf 5px */
+        gap: var(--space-xs);            /*  4px */
+        padding-block: var(--space-sm);  /*  5px */
     }
 
     .curtain-image {
-        width: 6.25rem;         /* wf 36 x 26 */
+        width: 6.25rem;         /*  36 x 26 */
         aspect-ratio: 18 / 13;
     }
 }
 
 
 /* ==========================================================================
-   9. About (4a: "Story-first, photo beside")
+   9. About ("Story-first, photo beside")
    ========================================================================== */
 
 /* Mobile stacks the story over the photo; desktop puts the photo at the right. */
@@ -922,7 +922,7 @@ h3.temperament-title {
 }
 
 .about-description {
-    padding-block: var(--space-sm);  /* wf mobile 6px */
+    padding-block: var(--space-sm);  /*  mobile 6px */
     padding-inline: var(--bleed-pad);
 }
 
@@ -938,17 +938,17 @@ h3.temperament-title {
 
 .about-image {
     width: 100%;
-    aspect-ratio: 11 / 3;      /* wf mobile 126 x 34 */
+    aspect-ratio: 11 / 3;      /*  mobile 126 x 34 */
     object-fit: cover;
     object-position: 50% 20%;  /* keeps the puppy's face in the crop */
-    filter: grayscale(100%);   /* wf "PHOTO (b&w)" */
+    filter: grayscale(100%);   /*  "PHOTO (b&w)" */
 }
 
 /* Stats: three evenly spaced figures. */
 .about-stat-content {
     display: flex;
     gap: var(--space-sm);            /* keeps long labels apart on phones */
-    padding-block: var(--space-md);  /* wf 8px */
+    padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
     text-align: center;
@@ -968,9 +968,9 @@ h3.temperament-title {
    home page thumbnails, so the tiles shrink rather than wrap). */
 .about-partners {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 7rem));  /* wf 40 x 24 */
-    gap: var(--space-xs) var(--space-sm);  /* wf 4px under the label, 5px between logos */
-    padding-block: var(--space-md);        /* wf 8px */
+    grid-template-columns: repeat(3, minmax(0, 7rem));  /*  40 x 24 */
+    gap: var(--space-xs) var(--space-sm);  /*  4px under the label, 5px between logos */
+    padding-block: var(--space-md);        /*  8px */
     padding-inline: var(--bleed-pad);
 }
 
@@ -1001,12 +1001,12 @@ h3.temperament-title {
         display: flex;
         flex: 1 1 0;
         align-items: center;
-        padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--bleed-pad);  /* wf 10px */
+        padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--bleed-pad);  /*  10px */
     }
 
     .about-image-container {
         position: relative;
-        flex: 0 0 31.25%;  /* wf 130 of 416 */
+        flex: 0 0 31.25%;  /*  130 of 416 */
         min-height: 18rem;
         border-top: 0;
     }
@@ -1021,47 +1021,47 @@ h3.temperament-title {
 
 
 /* ==========================================================================
-   10. Contact (5a: "Form + map side-by-side")
+   10. Contact ("Form + map side-by-side")
    ========================================================================== */
 
 .contact-title-container {
-    padding-block: var(--space-md);  /* wf 8px */
+    padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border-thin) solid var(--color-border);
 }
 
 .contact-title {
-    font-size: var(--text-lg);  /* wf 13px */
+    font-size: var(--text-lg);  /*  13px */
 }
 
 /* Mobile stacks form, then map and address; desktop puts them side by side. */
 .contact-contact-container {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);            /* wf 8px */
-    padding-block: var(--space-md);  /* wf 8px */
+    gap: var(--space-md);            /*  8px */
+    padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);  /* wf 5px */
+    gap: var(--space-sm);  /*  5px */
 }
 
 textarea.contact-input {
-    min-height: 7.5rem;  /* wf message box is roughly twice the input height */
+    min-height: 7.5rem;  /*  message box is roughly twice the input height */
     resize: vertical;
 }
 
 .contact-button {
-    padding: var(--space-xs) var(--space-md);  /* wf 4px 8px */
+    padding: var(--space-xs) var(--space-md);  /*  4px 8px */
 }
 
 .contact-map-section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);  /* wf 5px */
+    gap: var(--space-sm);  /*  5px */
 }
 
 .map-container {
@@ -1071,7 +1071,7 @@ textarea.contact-input {
 
 .map {
     width: 100%;
-    aspect-ratio: 16 / 5;  /* wf 194 x 60 */
+    aspect-ratio: 16 / 5;  /*  194 x 60 */
     object-fit: cover;
 }
 
@@ -1081,7 +1081,7 @@ textarea.contact-input {
     display: flex;
     flex-wrap: wrap;
     column-gap: 0.4em;
-    font-size: var(--text-xs);  /* wf 8px */
+    font-size: var(--text-xs);  /*  8px */
 }
 
 .contact-address p {
@@ -1118,11 +1118,6 @@ textarea.contact-input {
         min-width: 0;
     }
 }
-
-
-/* ==========================================================================
-   11. Donate (no wireframe; built from the patterns above)
-   ========================================================================== */
 
 .donate-title-container {
     display: grid;
