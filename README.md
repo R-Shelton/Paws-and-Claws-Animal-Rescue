@@ -134,6 +134,13 @@ All notable changes to this project are listed here, newest first. The format is
 
 - Added responsive design screenshots to the README.
 - As of 22/09/2026, still awaiting part 1 feedback....
+
+### 2026-09-25 (Part 2)
+
+#### Changed
+
+- Move the HMTL files out of the /pages directory to increase visibility.
+- As of 25/09/2026, still awaiting part 1 feedback....
   
 ## References
 
