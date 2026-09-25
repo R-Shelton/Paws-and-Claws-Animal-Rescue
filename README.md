@@ -53,6 +53,17 @@ The build is split into three parts, developed in stages:
 - CSS3
 - Vanilla JavaScript (no frameworks/libraries)
 
+## Responsive Design Screenshots
+
+- Home Page (Deskotp)
+- <img width="1900" height="907" alt="image" src="https://github.com/user-attachments/assets/e7d57d93-c235-4ee1-98b6-a177c798a187" />
+
+- Home Page (Tablet)
+- <img width="751" height="881" alt="image" src="https://github.com/user-attachments/assets/77732fe2-80db-4635-9bb9-2971a73b9446" />
+
+- Home Page (Mobile)
+- <img width="867" height="915" alt="image" src="https://github.com/user-attachments/assets/8aadc94c-ff86-498b-8409-d18c42664951" />
+
 ## Changelog
 
 All notable changes to this project are listed here, newest first. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), with related commits grouped and merge commits omitted. See the [full commit history](https://github.com/R-Shelton/Paws-and-Claws-Animal-Rescue/commits/main/) for every individual commit.
@@ -117,6 +128,13 @@ All notable changes to this project are listed here, newest first. The format is
 - Page markup updated across the site to support the new styles.
 - Animal images temporarily default to a single placeholder image (Milo); Part 3 will show each animal's own image.
 
+### 2026-09-22 (Part 2)
+
+#### Changed
+
+- Added responsive design screenshots to the README.
+- As of 22/09/2026, still awaiting part 1 feedback....
+  
 ## References
 
 -	Hostinger, 2026. 'What makes a good website? 15 characteristics to stand out', Hostinger Tutorials. [online] Available at: https://www.hostinger.com/tutorials/what-makes-a-good-website/ [Accessed: 9 August 2026].
