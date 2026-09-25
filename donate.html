@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cause:wght@100..900&family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
     <title>Paws and Claws Animal Rescue</title>
 </head>
@@ -26,61 +26,59 @@
             <label for="nav-toggle" class="nav-toggle-label"></label>
             <nav class="nav">
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="animals.html">Adopt</a></li>
-                    <li><a href="about.html" aria-current="page">About</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <a href="donate.html"><button class="donate-button">Donate</button></a>
+            <a href="donate.html" aria-current="page"><button class="donate-button">Donate</button></a>
         </div>
     </header>
-    <div class="content-about">
-        <!-- Mission statement paired with a supporting image. -->
-        <div class="about-section">
-            <div class="about-description">
-                <p class="about-description-wording">Our mission is simple: No adoptable animal should be without a home. Since 2018 we've rescued, fostered, and rehomed hundreds of pets across the country.</p>
+    <div class="content-donate">
+        <!-- Page heading/pitch for donating. -->
+        <div class="donate-title-container">
+            <h2 class="donate-title">Your gift feeds & shelters a rescue!</h2>
+            <p class="donate-description">100% of your donation goes directly to food, vet care, and foster support.</p>
+        </div>
+
+        <!-- Donation amount selection, recurring option, and submit. -->
+        <div class="donate-amount-container">
+            <div class="donate-amount-bubbles">
+                <button class="donate-amount-bubble">R100</button>
+                <button class="donate-amount-bubble">R200</button>
+                <button class="donate-amount-bubble">R300</button>
             </div>
 
-            <div class="about-image-container">
-                <img class="about-image" src="../images/vet_about.jpg" alt="Animal Rescue">
+            <div class="donate-recurring">
+                <label class="donate-recurring-label">
+                    <input class="donate-recurring-checkbox" type="checkbox"> Make this a monthly donation
+                </label>
+            </div>
+
+            <div class="donate-button-container">
+                <button class="donate-button">Donate Now --></button>
             </div>
         </div>
 
-        <!-- Organisation stats (rescued/adopted/volunteers). -->
-        <div class="about-stat-content">
-            <div class="about-stat">
-                <p class="about-stat-number">500+</p>
-                <p class="about-stat-text">Animals Rescued</p>
+        <!-- Reassurance section explaining where donations are spent. -->
+        <div class="donate-reassurance-container">
+            <div>
+                <p class="donate-reassurance-text">Your donation is tax-deductible and goes directly to:</p>
             </div>
 
-            <div class="about-stat">
-                <p class="about-stat-number">300+</p>
-                <p class="about-stat-text">Animals Adopted</p>
+            <div class="donate-reassurance-items">
+                <div class="donate-reassurance-item">
+                    <p>Vet Care</p>
+                </div>
 
-            </div>
+                <div class="donate-reassurance-item">
+                    <p>Food</p>
+                </div>
 
-            <div class="about-stat">
-                <p class="about-stat-number">60+</p>
-                <p class="about-stat-text">Volunteers</p>
-            </div>
-
-        </div>
-
-        <!-- Partner organisation logos. -->
-        <div class="about-partners">
-            <p class="about-partners-text">Our Partners</p>
-
-            <div class="about-partner">
-                <img class="partner-logo" src="../images/pick-n-pay-logo.png" alt="Partner 1 Logo">
-            </div>
-
-            <div class="about-partner">
-                <img class="partner-logo" src="../images/SPCA_logo.jpg" alt="Partner 1 Logo">
-            </div>
-
-            <div class="about-partner">
-                <img class="partner-logo" src="../images/ARO.jpg" alt="Partner 1 Logo">
+                <div class="donate-reassurance-item">
+                    <p>Foster Support</p>
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +89,7 @@
         <div class="footer-links-container">
             <p class="footer-title">Quick Links</p>
             <ul class="footer-links">
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="animals.html">Adopt</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
