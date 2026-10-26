@@ -45,9 +45,10 @@
         <!-- Donation amount selection, recurring option, and submit. -->
         <div class="donate-amount-container">
             <div class="donate-amount-bubbles">
-                <button class="donate-amount-bubble">R100</button>
-                <button class="donate-amount-bubble">R200</button>
-                <button class="donate-amount-bubble">R300</button>
+                <!-- aria-pressed marks the chosen amount; JS/donate.js toggles it and the CSS highlights it. -->
+                <button type="button" class="donate-amount-bubble" aria-pressed="false">R100</button>
+                <button type="button" class="donate-amount-bubble" aria-pressed="false">R200</button>
+                <button type="button" class="donate-amount-bubble" aria-pressed="false">R300</button>
             </div>
 
             <div class="donate-recurring">
@@ -57,8 +58,11 @@
             </div>
 
             <div class="donate-button-container">
-                <button class="donate-button">Donate Now --></button>
+                <button type="button" class="donate-button" id="donate-submit">Donate Now --></button>
             </div>
+
+            <!-- Hidden until "Donate Now" is clicked without an amount chosen. -->
+            <p class="donate-hint" id="donate-hint" role="status" hidden>Please choose an amount first.</p>
         </div>
 
         <!-- Reassurance section explaining where donations are spent. -->
@@ -82,7 +86,18 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- Thank-you popup, opened by JS/donate.js. The native <dialog> provides the backdrop, focus handling and Esc-to-close; the method="dialog" form closes it. -->
+    <dialog class="donate-thanks" id="donate-thanks" aria-labelledby="donate-thanks-title">
+        <div class="donate-thanks-body">
+            <h2 class="donate-thanks-title" id="donate-thanks-title">Thank you!</h2>
+            <p id="donate-thanks-text">Thank you for your generous donation.</p>
+            <form method="dialog">
+                <button class="donate-thanks-close">Close</button>
+            </form>
+        </div>
+    </dialog>
+
     <!-- Site footer: quick links, visit info, and social icons (repeated on every page). -->
     <footer class="footer">
         <!-- Repeats primary nav links for footer access. -->
@@ -116,5 +131,7 @@
         </div>
         <p class="footer-text-about">&copy; 2026 Paws and Claws Animal Rescue. All rights reserved.</p>
     </footer>
+
+    <script src="JS/donate.js"></script>
 </body>
 </html>
