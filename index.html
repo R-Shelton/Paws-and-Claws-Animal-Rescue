@@ -40,7 +40,7 @@
         <div class="main-content">
             <img class="main-image" src="images/main_image.jpg" alt="Animal Rescue">
             <h2 class="main-title">"Every pet deserves a loving home."</h2>
-            <button class="adopt-button">Adopt Now</button>
+            <button class="adopt-button"><a href="animals.html" style="text-decoration: none;">Adopt Now</a></button>
         </div>
         <!-- Headline adoption/rescue stats. -->
         <div class="stats">
@@ -68,9 +68,9 @@
             </div>
         </div>
     </div>
-    <!-- Volunteer signup: email capture form. Submit handling and the confirmation message below are wired up in Part 3's JS. -->
+    <!-- Volunteer signup: email capture form. Submitted via EmailJS by JS/volunteer.js, which also shows the status message below. -->
     <div class="volunteer-section">
-        <form class="volunteer-form" method="get">
+        <form class="volunteer-form" id="volunteer-form" method="get">
             <input type="email"
                 id="volunteer-email"
                 name="email"
@@ -80,8 +80,8 @@
             <button type="submit" class="volunteer-button">Join &amp; Volunteer</button>
         </form>
 
-        <!-- Hidden until Part 3's JS reveals it on submit. -->
-        <p class="volunteer-message" id="volunteer-message" hidden>
+        <!-- Hidden until JS/volunteer.js reveals it on submit. The text below is the success message; the script swaps in progress and error text as needed. -->
+        <p class="volunteer-message" id="volunteer-message" role="status" hidden>
             Thanks! An email with further information is on its way.
         </p>
     </div>
@@ -119,5 +119,9 @@
         </div>
         <p class="footer-text-home">&copy; 2026 Paws and Claws Animal Rescue. All rights reserved.</p>
     </footer>
+
+    <!-- EmailJS browser SDK (CDN, no build step). Provides the global `emailjs` used by JS/volunteer.js, so it must load first. -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
+    <script src="JS/volunteer.js"></script>
 </body>
 </html>
