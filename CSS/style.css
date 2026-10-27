@@ -1103,9 +1103,13 @@ textarea.contact-input {
     background-color: var(--color-placeholder);
 }
 
+/* The embedded Google Map iframe. An iframe is inline with a default border,
+   so it is made a block and the border removed. */
 .map {
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 5;  /*  194 x 60 */
+    border: 0;
     object-fit: cover;
 }
 
