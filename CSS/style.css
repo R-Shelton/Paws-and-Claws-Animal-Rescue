@@ -110,7 +110,16 @@
     box-sizing: border-box;
 }
 
+/* The body is a column at least one screen tall. On a short page the content
+   wrapper (see section 3) grows to fill the gap, so the footer sits at the
+   bottom of the screen instead of leaving the bare page background showing
+   beneath it. 100dvh follows the visible area on phones, where 100vh
+   includes the space behind the browser's address bar. */
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
     margin: 0;
     font-family: var(--font-body);
     font-size: var(--text-sm);
@@ -184,12 +193,35 @@ h3.temperament-title,
     color: var(--color-label);
 }
 
-/* Filled accent button: the wireframe's orange "Donate", "Adopt Now" and
-   "Send". Also works if the markup changes from <button> to <a>. */
+/* Page content: every page's main sections sit on the brand-50 tint the home
+   page uses for its bands. Photos (the hero, the detail gallery) cover it, and
+   the header (brand-100) and footer set their own backgrounds. Anything
+   filled with --color-tint inside these wrappers would vanish into the band,
+   so use --color-surface or --brand-100 for fills there. The wrapper also
+   grows to fill the body (see section 2), keeping the footer at the bottom
+   of short pages. It is a column so each page can hand that leftover height
+   to its own bands (see sections 7 and 10) rather than leaving it as one
+   dead gap above the footer. */
+.content,
+.content-about,
+.content-detail,
+.content-contact,
+.content-donate {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    background-color: var(--brand-50);
+}
+
+/* Filled accent button, used for every button on the site: the wireframe's
+   orange "Donate", "Adopt Now" and "Send". Each page adds only its own size
+   tweaks. Also works if the markup changes from <button> to <a>. */
 .donate-button,
 .donate-thanks-close,
 .adopt-button,
-.contact-button {
+.contact-button,
+.volunteer-button,
+.donate-amount-bubble {
     display: inline-block;
     padding: var(--space-2xs) var(--space-md);  /*  3px 8px */
     border: var(--border) solid var(--color-border);
@@ -207,25 +239,16 @@ h3.temperament-title,
 .donate-button:hover,
 .donate-thanks-close:hover,
 .adopt-button:hover,
-.contact-button:hover {
+.contact-button:hover,
+.volunteer-button:hover,
+.donate-amount-bubble:hover {
     background-color: var(--color-accent-hover);
 }
 
-/* Outline button: the wireframe's "Join & volunteer". Slightly narrower on
-   phones so the email field beside it has room; desktop restores 8px. */
+/* "Join & Volunteer" is slightly narrower on phones so the email field beside
+   it has room; desktop restores 8px (see section 6). */
 .volunteer-button {
     padding: var(--space-xs) var(--space-sm);  /*  4px 8px, narrowed on phones */
-    border: var(--border) solid var(--color-border);
-    border-radius: var(--radius);
-    background-color: transparent;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    line-height: 1.2;
-    transition: background-color 150ms ease;
-}
-
-.volunteer-button:hover {
-    background-color: var(--color-tint);
 }
 
 /* Text fields. Keeping them at 1rem stops iOS Safari zooming in on focus. */
@@ -253,6 +276,7 @@ h3.temperament-title,
 
 .header {
     border-bottom: var(--border-thick) solid var(--color-border);
+    background-color: var(--brand-100);
 }
 
 .nav-container {
@@ -403,6 +427,7 @@ h3.temperament-title,
     border-top: var(--border) solid var(--color-border);
     font-size: var(--text-xs);             /*  8px */
     color: var(--color-text-muted);        /*  #6b6659 */
+    background-color: var(--brand-50);
 }
 
 .footer-title,
@@ -537,6 +562,7 @@ h3.temperament-title,
     font-family: var(--font-heading);
     font-weight: 600;
     text-align: center;
+    background-color: var(--brand-50);
 }
 
 .stats span {
@@ -552,6 +578,7 @@ h3.temperament-title,
     padding-block: var(--space-md);        /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
+    background-color: var(--brand-50);
 }
 
 .urgent-fosters-title {
@@ -574,6 +601,7 @@ h3.temperament-title,
     padding-block: var(--space-md);        /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
+    background-color: var(--brand-50);
 }
 
 .happy-tails-title {
@@ -591,6 +619,7 @@ h3.temperament-title,
 .volunteer-section {
     padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
+    background-color: var(--brand-50);
 }
 
 .volunteer-form {
@@ -605,6 +634,7 @@ h3.temperament-title,
     flex: 1 1 8rem;
     width: auto;
     min-width: 0;
+    background-color: var(--color-surface);
 }
 
 .volunteer-message {
@@ -633,15 +663,28 @@ h3.temperament-title,
     padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border) solid var(--color-border);
+    display: flex;
+    justify-content: center;
 }
 
 .main-title-about {
     font-size: var(--text-lg);  /*  13px */
 }
 
+/* On a page shorter than the screen, the list takes the leftover height and
+   its rows share it equally, so the spacing between the row rules stays even
+   instead of collecting under the last card. flex-basis stays auto and the
+   rows never shrink, so a full list keeps its natural heights. */
+.animal-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
 /* The 1fr rows above and below the text centre it against the photo. */
 .animal-card {
     position: relative;  /* anchors the full-row link below */
+    flex: 1 0 auto;      /* takes an equal share of the list's spare height */
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr auto auto auto 1fr;
@@ -657,7 +700,7 @@ h3.temperament-title,
 }
 
 .animal-card:hover {
-    background-color: var(--color-tint);
+    background-color: var(--brand-100);  /* a step darker than the brand-50 page tint */
 }
 
 .animal-image {
@@ -860,7 +903,7 @@ h3.temperament-title {
 }
 
 .temperament-bubbles .descriptor-bubble {
-    background-color: var(--color-tint);  /*  #f3ede3 filled pills */
+    background-color: var(--color-surface);  /* filled pills, white against the brand-50 band */
 }
 
 /* Adoption steps: numbered circles over their labels. */
@@ -869,7 +912,6 @@ h3.temperament-title {
     justify-content: space-around;
     padding-block: var(--space-sm);  /*  6px */
     padding-inline: var(--bleed-pad);
-    border-bottom: var(--border) solid var(--color-border);
     font-size: var(--text-xs);       /*  8px */
     text-align: center;
 }
@@ -894,31 +936,27 @@ h3.temperament-title {
 }
 
 /* Start Adoption bar. It sticks to the bottom of the viewport until the
-   page is scrolled to its natural position at the end. */
+   page is scrolled to its natural position at the end. The band is opaque so
+   the page scrolls cleanly beneath it, and holds the standard accent button
+   (full width on phones, centred and capped on wider screens). Its top rule
+   also closes the adoption steps above it, which have no bottom rule of
+   their own, so the two never stack into a double line. */
 .adopt-button-container {
     position: sticky;
     bottom: 0;
     z-index: 1;
+    padding-block: var(--space-sm);  /*  6px */
+    padding-inline: var(--bleed-pad);
+    border-top: var(--border) solid var(--color-border);
+    background-color: var(--brand-50);
 }
 
 .adopt-button-container .adopt-button {
     display: block;
-    width: 100%;
-    padding: var(--space-md) var(--gutter);  /*  7px 10px */
-    border: 0;
-    border-radius: 0;
-    background-color: var(--color-text);     /*  #1a1a1a bar */
-    color: var(--color-on-accent);
-    font-size: var(--text-md);               /*  10px */
-}
-
-.adopt-button-container .adopt-button:hover {
-    background-color: var(--brand-800);
-}
-
-/* The bar spans the full viewport, so draw its focus ring inside it. */
-.adopt-button-container .adopt-button:focus-visible {
-    outline-offset: -6px;
+    width: min(100%, 24rem);
+    margin-inline: auto;
+    padding: var(--space-xs) var(--space-lg);  /*  4px 10px */
+    font-size: var(--text-md);                 /*  10px */
 }
 
 @media (min-width: 56rem) {
@@ -946,6 +984,7 @@ h3.temperament-title {
 .about-section {
     display: flex;
     flex-direction: column;
+    flex: 1 0 auto;  /* shares the page's spare height; on desktop the photo fills it */
     border-bottom: var(--border) solid var(--color-border);
 }
 
@@ -975,6 +1014,8 @@ h3.temperament-title {
 /* Stats: three evenly spaced figures. */
 .about-stat-content {
     display: flex;
+    align-items: center;             /* centres the figures in whatever height the band takes */
+    flex: 1 0 auto;                  /* shares the page's spare height */
     gap: var(--space-sm);            /* keeps long labels apart on phones */
     padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
@@ -997,6 +1038,8 @@ h3.temperament-title {
 .about-partners {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 7rem));  /*  40 x 24 */
+    align-content: center;                 /* centres the label and tiles in the band */
+    flex: 1 0 auto;                        /* shares the page's spare height */
     gap: var(--space-xs) var(--space-sm);  /*  4px under the label, 5px between logos */
     padding-block: var(--space-md);        /*  8px */
     padding-inline: var(--bleed-pad);
@@ -1052,32 +1095,59 @@ h3.temperament-title {
    10. Contact ("Form + map side-by-side")
    ========================================================================== */
 
+/* Passes any leftover page height down to the form and map band below, so
+   the heading keeps its own height. */
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
 .contact-title-container {
     padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
     border-bottom: var(--border-thin) solid var(--color-border);
+    align-items: center;
 }
 
 .contact-title {
     font-size: var(--text-lg);  /*  13px */
+    display: flex;
+    justify-content: center;
 }
 
-/* Mobile stacks form, then map and address; desktop puts them side by side. */
+/* Mobile stacks form, then map and address; desktop puts them side by side.
+   This band takes the page's leftover height (see .contact-section). Its two
+   columns stretch to fill it, and the message box and the map take up the
+   slack inside them, so a short page spends the space on a bigger writing
+   area and a bigger map instead of leaving a gap above the footer. */
 .contact-contact-container {
     display: flex;
     flex-direction: column;
+    flex: 1 0 auto;
     gap: var(--space-md);            /*  8px */
     padding-block: var(--space-md);  /*  8px */
     padding-inline: var(--bleed-pad);
 }
 
+/* Lets the form fill the column's full height (see .contact-contact-container). */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
 .contact-form {
     display: flex;
     flex-direction: column;
+    flex: 1 0 auto;
     gap: var(--space-sm);  /*  5px */
 }
 
+/* The message box absorbs whatever height the form has spare, which keeps the
+   Send button at the foot of the form. min-height is its floor on a full page;
+   the visitor can still drag it taller. */
 textarea.contact-input {
+    flex: 1 0 auto;
     min-height: 7.5rem;  /*  message box is roughly twice the input height */
     resize: vertical;
 }
@@ -1098,15 +1168,21 @@ textarea.contact-input {
     gap: var(--space-sm);  /*  5px */
 }
 
+/* Takes the height left over beside the form, so the map grows instead of
+   leaving the column short. */
 .map-container {
+    display: flex;
+    flex: 1 0 auto;
     border: var(--border) solid var(--color-border);
     background-color: var(--color-placeholder);
 }
 
 /* The embedded Google Map iframe. An iframe is inline with a default border,
-   so it is made a block and the border removed. */
+   so it is made a block and the border removed. The aspect ratio is its
+   starting height; it stretches past that when the column has room. */
 .map {
     display: block;
+    flex: 1 0 auto;
     width: 100%;
     aspect-ratio: 16 / 5;  /*  194 x 60 */
     border: 0;
@@ -1157,8 +1233,13 @@ textarea.contact-input {
     }
 }
 
+/* The three donate bands each take an equal share of the page's spare height
+   and centre their own content, so a short page gains a little room in every
+   band instead of one dead gap above the footer. */
 .donate-title-container {
     display: grid;
+    align-content: center;
+    flex: 1 0 auto;
     gap: var(--space-2xs);
     padding-block: var(--space-md);
     padding-inline: var(--bleed-pad);
@@ -1167,10 +1248,14 @@ textarea.contact-input {
 
 .donate-title {
     font-size: var(--text-lg);
+    display: flex;
+    justify-content: center;
 }
 
 .donate-description {
     color: var(--color-text-muted);
+    display: flex;
+    justify-content: center;
 }
 
 /* Amount pills, monthly option and the main CTA. */
@@ -1178,6 +1263,8 @@ textarea.contact-input {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;  /* column direction, so this is the vertical axis */
+    flex: 1 0 auto;
     gap: var(--space-sm);
     padding-block: var(--space-md);
     padding-inline: var(--bleed-pad);
@@ -1190,26 +1277,21 @@ textarea.contact-input {
     gap: var(--space-xs);
 }
 
+/* The amounts are standard accent buttons (see section 3); only the width is
+   set here. */
 .donate-amount-bubble {
     min-width: 6rem;
-    padding: var(--space-2xs) var(--space-md);
-    border: var(--border) solid var(--color-border);
-    border-radius: var(--radius-pill);
-    background-color: var(--color-surface);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    transition: background-color 150ms ease;
+    display: flex;
+    justify-content: center;
 }
 
-.donate-amount-bubble:hover {
-    background-color: var(--color-tint);
-}
-
-/* Chosen amount (set by JS/donate.js). Declared after :hover, which it ties
-   on specificity, so the selected pill keeps its fill under the pointer. */
+/* Chosen amount (set by JS/donate.js). With every amount filled, colour alone
+   can't carry the selection, so it also gets a darker fill and a white inner
+   ring. Declared after :hover, which it ties on specificity, so the chosen
+   amount keeps its look under the pointer. */
 .donate-amount-bubble[aria-pressed="true"] {
-    background-color: var(--color-accent);
-    color: var(--color-on-accent);
+    background-color: var(--brand-900);
+    box-shadow: inset 0 0 0 2px var(--color-on-accent);
 }
 
 .donate-recurring-label {
@@ -1269,6 +1351,8 @@ textarea.contact-input {
 /* Where the money goes: tinted tiles that wrap on narrow screens. */
 .donate-reassurance-container {
     display: grid;
+    align-content: center;
+    flex: 1 0 auto;
     gap: var(--space-xs);
     padding-block: var(--space-md);
     padding-inline: var(--bleed-pad);
@@ -1284,7 +1368,7 @@ textarea.contact-input {
     flex: 1 1 10rem;
     padding: var(--space-sm);
     border: var(--border) solid var(--color-border);
-    background-color: var(--color-tint);
+    background-color: var(--color-surface);  /* white tiles against the brand-50 band */
     font-family: var(--font-heading);
     font-weight: 600;
     text-align: center;
