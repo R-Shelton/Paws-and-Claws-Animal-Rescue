@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap for Paws and Claws Animal Rescue.
+
+  Lists every page search engines should know about, so they are not left
+  to discover the site by following links alone. The per-animal pages
+  matter most here: their content is built at runtime by JS/animaldetail.js
+  from the ANIMALS array in JS/animals-data.js, so a crawler that does not
+  run JavaScript would otherwise see nothing on them.
+
+  Keep <lastmod> honest: it should say when that page's content last
+  changed. A date left to go stale is worse than no date at all, because
+  search engines stop trusting it.
+
+  Adding an animal to JS/animals-data.js means adding its <url> entry here
+  as well; this file is not generated.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Home -->
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+    <!-- Adopt: the listing of animals available for adoption -->
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animals.html</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/about.html</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/contact.html</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/donate.html</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+    <!-- One entry per animal in JS/animals-data.js. The bare
+         animaldetail.html is left out on purpose: without an id it has no
+         animal to show. -->
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animaldetail.html?id=1</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animaldetail.html?id=2</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+    <url>
+        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animaldetail.html?id=3</loc>
+        <lastmod>2026-10-27</lastmod>
+    </url>
+
+</urlset>

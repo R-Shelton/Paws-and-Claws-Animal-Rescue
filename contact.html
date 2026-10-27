@@ -46,25 +46,35 @@
             <div class="contact-contact-container">
                 <!-- Enquiry form. Submitted via EmailJS by JS/contact.js, which also shows the status message below. -->
                 <div class="contact-info">
-                    <form class="contact-form" id="contact-form" method="post">
+                    <!-- novalidate turns off the browser's own pop-up bubbles so JS/contact.js can show its messages in the page instead; the required and type attributes stay, because the script still reads them. Each field points at the empty paragraph below it, which the script fills in when that field is wrong. -->
+                    <form class="contact-form" id="contact-form" method="post" novalidate>
                         <input type="text"
                             id="name"
                             name="name"
                             class="contact-input"
                             placeholder="Name"
+                            aria-describedby="name-error"
                             required>
+                        <p class="field-error" id="name-error" hidden></p>
+
                         <input type="email"
                             id="email"
                             name="email"
                             class="contact-input"
                             placeholder="Email"
+                            aria-describedby="email-error"
                             required>
+                        <p class="field-error" id="email-error" hidden></p>
+
                         <textarea
                             id="message"
                             name="message"
                             class="contact-input"
                             placeholder="Message"
+                            aria-describedby="message-error"
                             required></textarea>
+                        <p class="field-error" id="message-error" hidden></p>
+
                         <button type="submit" class="contact-button">Send Enquiry</button>
 
                         <!-- Hidden until JS/contact.js reveals it on submit. The text below is the success message; the script swaps in progress and error text as needed. -->
