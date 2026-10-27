@@ -30,80 +30,85 @@
         </header>
         <div class="content-detail">
 
-            <!-- DISCLAIMER: All this info is hard coded for now, but will ideally be dynamically populated by the backend based on the selected animal, will ammend and add IDs to the elements if needed. -->
+            <!-- Everything below is filled in by JS/animaldetail.js from the animal whose id is in the query string (animaldetail.html?id=2). It stays hidden until then so empty placeholders never show. -->
+            <div id="animal-detail" hidden>
 
-            <!-- Image gallery: main photo plus thumbnails. -->
-            <div class="animal-detail-card">
-                <div class="animal-detail-image-container">
-                    <img class="main-detail-image" src="images/milo_1.jpg" alt="Animal Image">
+                <!-- Image gallery: main photo plus thumbnails (one button per photo, built by JS). -->
+                <div class="animal-detail-card">
+                    <div class="animal-detail-image-container">
+                        <img class="main-detail-image" id="animal-main-image" src="" alt="">
+                    </div>
+
+                    <div class="animal-detail-images" id="animal-thumbnails"></div>
                 </div>
 
-                <div class="animal-detail-images">
-                    <!-- Images for the rest of the images not in focus, add on click listener to bring into main focus, will be done in part 3 -->
-                    <img class="curtain-image" src="images/milo_1.jpg" alt="Animal Image 1">
-                    <img class="curtain-image" src="images/milo_2.jpg" alt="Animal Image 2">
-                    <img class="curtain-image" src="images/milo_3.jpg" alt="Animal Image 3">
-                </div>
-            </div>
+                <!-- Core animal details: name, breed/gender/age tags, price, and condition. -->
+                <div class="animal-detail-info">
+                    <h2 class="animal-detail-name" id="animal-name"></h2>
+                    <div class="descriptor-bubble">
+                        <p class="animal-detail-breed" id="animal-species"></p>
+                    </div>
+                    <div class="descriptor-bubble">
+                        <p class="animal-detail-gender" id="animal-gender"></p>
+                    </div>
 
-            <!-- Core animal details: name, breed/gender/age tags, price, and condition. -->
-            <div class="animal-detail-info">
-                <h2 class="animal-detail-name">Milo</h2>
-                <div class="descriptor-bubble">
-                    <p class="animal-detail-breed">Dog</p>
-                </div>
-                <div class="descriptor-bubble">
-                    <p class="animal-detail-gender">Male</p>
-                </div>
+                    <div class="descriptor-bubble">
+                        <p class="animal-detail-age" id="animal-age"></p>
+                    </div>
 
-                <div class="descriptor-bubble">
-                    <p class="animal-detail-age">2 years</p>
-                </div>
+                    <div class="animal-info">
+                        <p class="animal-price">Price: </p>
+                        <p class="animal-price-flag" id="animal-price"></p>
+                        <span class="detail-separator"></span>
+                        <p class="animal-condition" id="animal-condition"></p>
+                    </div>
 
-                <div class="animal-info">
-                    <p class="animal-price">Price: </p>
-                    <p class="animal-price-flag">R1 500.00</p>
-                    <span class="detail-separator"></span>
-                    <p class="animal-condition">Vaccinated & Neutered.</p>
                 </div>
 
-            </div>
+                <!-- Temperament tags for the animal (built by JS). -->
+                <div class="animal-temperment-section">
+                    <div class="temperament-title">
+                        <h3 class="temperament-title">Temperament</h3>
+                    </div>
 
-            <!-- Temperament tags for the animal. -->
-            <div class="animal-temperment-section">
-                <div class="temperament-title">
-                    <h3 class="temperament-title">Temperament</h3>
+                    <div class="temperament-bubbles" id="animal-temperament"></div>
                 </div>
 
-                <div class="temperament-bubbles">
-                    <div class="descriptor-bubble">Playful</div>
-                    <div class="descriptor-bubble">Loving</div>
-                    <div class="descriptor-bubble">Good w/ Kids</div>
-                </div>
-            </div>
+                <!-- Numbered walkthrough of the adoption process. -->
+                <div class="animal-adoption-steps">
+                    <div class="application-step">
+                        <p class="step-number">1</p>
+                        <p class="step-action">Apply.</p>
+                    </div>
 
-            <!-- Numbered walkthrough of the adoption process. -->
-            <div class="animal-adoption-steps">
-                <div class="application-step">
-                    <p class="step-number">1</p>
-                    <p class="step-action">Apply.</p>
+                    <div class="application-step">
+                        <p class="step-number">2</p>
+                        <p class="step-action">Meet.</p>
+                    </div>
+
+                    <div class="application-step">
+                        <p class="step-number">3</p>
+                        <p class="step-action">Bring Home!</p>
+                    </div>
                 </div>
 
-                <div class="application-step">
-                    <p class="step-number">2</p>
-                    <p class="step-action">Meet.</p>
-                </div>
-
-                <div class="application-step">
-                    <p class="step-number">3</p>
-                    <p class="step-action">Bring Home!</p>
+                <!-- Adoption CTA. Not yet wired up to any adoption flow. -->
+                <div class="adopt-button-container">
+                    <button class="adopt-button">Start Adoption -->></button>
                 </div>
             </div>
 
-            <!-- Adoption CTA. Not yet wired up to any adoption flow. -->
-            <div class="adopt-button-container">
-                <button class="adopt-button">Start Adoption -->></button>
-            </div>
+            <!-- Shown by JS instead of the above when the id is missing or matches no animal. -->
+            <p class="animal-not-found" id="animal-not-found" role="alert" hidden>
+                Sorry, we couldn't find that animal. <a href="animals.html">See all animals available for adoption</a>.
+            </p>
+
+            <noscript>
+                <p class="animal-not-found">This page needs JavaScript to show an animal's details. <a href="animals.html">Back to adopt</a>.</p>
+            </noscript>
         </div>
+
+        <script src="JS/animals-data.js"></script>
+        <script src="JS/animaldetail.js"></script>
     </body>
 </html>

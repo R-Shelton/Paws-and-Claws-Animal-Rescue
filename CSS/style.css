@@ -775,6 +775,30 @@ h3.temperament-title,
     background-color: var(--color-placeholder);
 }
 
+/* Thumbnails are buttons so keyboard users can switch photos too. The button
+   chrome is stripped so only the image shows; the photo on display is
+   full-strength and the others are dimmed. */
+.curtain-button {
+    padding: 0;
+    border: 0;
+    background: none;
+    line-height: 0;
+}
+
+.curtain-button:not([aria-pressed="true"]) .curtain-image {
+    opacity: 0.6;
+}
+
+.curtain-button:not([aria-pressed="true"]):hover .curtain-image {
+    opacity: 1;
+}
+
+/* Shown in place of the details when the animal isn't found. */
+.animal-not-found {
+    padding-block: var(--space-md);  /*  8px */
+    padding-inline: var(--bleed-pad);
+}
+
 /* Name, descriptor pills and price. The pills sit between the name and the
    price line; flex-wrap puts each of those on its own full-width line. */
 .animal-detail-info {
