@@ -591,12 +591,27 @@ h3.temperament-title,
     grid-column: 1 / -1;
 }
 
+/* The photo is wrapped in a link to that animal's detail page, and the link
+   is the grid item, so it has to be a block for the photo to fill the
+   column. */
+.urgent-fosters-link {
+    display: block;
+}
+
 .urgent-fosters-img {
     width: 100%;
     aspect-ratio: 15 / 11;
     object-fit: cover;
     border: var(--border) solid var(--color-border);
     background-color: var(--color-placeholder);
+    transition: border-color 150ms ease;
+}
+
+/* Marks the photo as something to click. The focus ring comes from the
+   global :focus-visible rule, drawn around the link, which sits exactly on
+   the photo's edge. */
+.urgent-fosters-link:hover .urgent-fosters-img {
+    border-color: var(--color-accent);
 }
 
 /* Happy tails: two quote cards side by side; they stack when narrow. */

@@ -54,9 +54,16 @@
         <!-- Urgent fosters spotlight. Animals are hardcoded for now; Part 3 may populate this from the same animal data source as animals.html. -->
         <div class="urgent-fosters">
             <p class="urgent-fosters-title">Urgent Fosters Needed</p>
-            <img id="animal1" src="images/milo-jack-russell-terrier-1.jpg" alt="Milo, a brown and white Jack Russell terrier, bounding across a grassy field" class="urgent-fosters-img">
-            <img id="animal2" src="images/nova-tabby-and-white-cat-1.jpg" alt="Nova, a tabby and white cat, perched on a tree stump in autumn woodland" class="urgent-fosters-img">
-            <img id="animal3" src="images/rex-grey-scottish-fold-cat-1.jpg" alt="Rex, a grey Scottish Fold cat, relaxing upside down in a cardboard box" class="urgent-fosters-img">
+            <!-- Each photo links to that animal's detail page. The number in the query string is the animal's id in JS/animals-data.js, which JS/animaldetail.js reads to decide what to show. These are plain links rather than JS click handlers, so they keep working without JavaScript, can be opened in a new tab, and give search engines a path to the detail pages. The link carries the aria-label because the photo is the whole link, so its name needs to say where it goes. -->
+            <a class="urgent-fosters-link" href="animaldetail.html?id=1" aria-label="View adoption details for Milo">
+                <img id="animal1" src="images/milo-jack-russell-terrier-1.jpg" alt="Milo, a brown and white Jack Russell terrier, bounding across a grassy field" class="urgent-fosters-img">
+            </a>
+            <a class="urgent-fosters-link" href="animaldetail.html?id=2" aria-label="View adoption details for Nova">
+                <img id="animal2" src="images/nova-tabby-and-white-cat-1.jpg" alt="Nova, a tabby and white cat, perched on a tree stump in autumn woodland" class="urgent-fosters-img">
+            </a>
+            <a class="urgent-fosters-link" href="animaldetail.html?id=3" aria-label="View adoption details for Rex">
+                <img id="animal3" src="images/rex-grey-scottish-fold-cat-1.jpg" alt="Rex, a grey Scottish Fold cat, relaxing upside down in a cardboard box" class="urgent-fosters-img">
+            </a>
         </div>
 
         <!-- Adopter testimonials. -->
