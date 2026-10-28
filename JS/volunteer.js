@@ -26,9 +26,9 @@ const SENDING_TEXT = "Sending...";
 const RATE_LIMITED_TEXT = "Please wait a few seconds before trying again.";
 const FAILURE_TEXT = "Sorry, something went wrong. Please try again later.";
 
-function initContactForm() {
-    const form = document.getElementById("contact-form");
-    const message = document.getElementById("contact-message");
+function initVolunteerForm() {
+    const form = document.getElementById("volunteer-form");
+    const message = document.getElementById("volunteer-message");
     if (!form || !message) {
         return;
     }
