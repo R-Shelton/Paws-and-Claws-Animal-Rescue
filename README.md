@@ -146,6 +146,20 @@ All notable changes to this project are listed here, newest first. The format is
 - Move the HMTL files out of the /pages directory to increase visibility.
 - As of 25/09/2026, still awaiting part 1 feedback....
 
+### 2026-10-26 (Part 3)
+
+#### Added
+
+- `JS/donate.js`: popup thanking the visitor for their donation on the Donate page.
+- EmailJS integration on the Contact page's form.
+- EmailJS integration on the home page's volunteer sign-up: emails are sent to the address entered.
+
+#### Changed
+
+- `donate.html` updated to support the new donation behaviour.
+- "Adopt Now" button now links to the Adopt page.
+- Social links now point to Rosebank International's socials, as the website is fictitious.
+
 ### 2026-10-27 (Part 3)
 
 #### Added
@@ -164,20 +178,6 @@ All notable changes to this project are listed here, newest first. The format is
 #### Fixed
 
 - Viewport heights corrected so the background canvas is no longer visible below the footer.
-
-### 2026-10-26 (Part 3)
-
-#### Added
-
-- `JS/donate.js`: popup thanking the visitor for their donation on the Donate page.
-- EmailJS integration on the Contact page's form.
-- EmailJS integration on the home page's volunteer sign-up: emails are sent to the address entered.
-
-#### Changed
-
-- `donate.html` updated to support the new donation behaviour.
-- "Adopt Now" button now links to the Adopt page.
-- Social links now point to Rosebank International's socials, as the website is fictitious.
   
 ## References
 
