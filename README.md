@@ -3,7 +3,7 @@
 ## Student Information
 
 **Student Number**: ST10507345
-**Student Name**: Ryan Shelton
+**Student Name**:   Ryan Shelton
 
 A website built for **Paws & Claws Animal Rescue**, a non-profit, volunteer-run
 animal rescue shelter. The site gives the shelter an online presence to
@@ -24,11 +24,12 @@ Key performance indicators would be:
 
 - **Home** — introduction, adoption/donation calls to action, shelter stats,
   urgent foster listings, and adopter success stories ("Happy Tails")
-- **Adopt** — browse animals currently available for adoption
+- **Adopt** — browse animals currently available for adoption; selecting an animal opens its detail page
+- **Animal detail** — photos, temperament and details for the selected animal, loaded dynamically from `JS/animals-data.js` via the `?id=` URL parameter
 - **About** — the shelter's background and mission
-- **Donate** — support the shelter's rescue work, used to give donations to the company.
-- **Contact** — get in touch with the shelter
-- **Volunteer sign-up** — email opt-in for people wanting to get involved
+- **Donate** — support the shelter's rescue work, used to give donations to the company. Shows a thank-you popup after donating (front-end only, no payment is processed)
+- **Contact** — get in touch with the shelter; the form is validated client-side and sent through EmailJS, and the page embeds a map of the shelter's HQ
+- **Volunteer sign-up** — email opt-in on the home page; volunteer information is emailed to the address entered (via EmailJS)
 
 ## Timeline
 
@@ -51,7 +52,10 @@ The build is split into three parts, developed in stages:
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (no frameworks/libraries)
+- Vanilla JavaScript (no frameworks)
+- [EmailJS](https://www.emailjs.com/) browser SDK for the contact and volunteer forms (the only third-party library)
+- Google Maps embed on the Contact page
+- `robots.txt` and `sitemap.xml` for search engine crawlers
 
 ## Responsive Design Screenshots
 
@@ -141,6 +145,39 @@ All notable changes to this project are listed here, newest first. The format is
 
 - Move the HMTL files out of the /pages directory to increase visibility.
 - As of 25/09/2026, still awaiting part 1 feedback....
+
+### 2026-10-27 (Part 3)
+
+#### Added
+
+- Animal detail page behaviour: selecting an animal on the Adopt page opens the detail page populated with that animal's data.
+- Home page: the "urgent fosters needed" images now link to the detail page for that animal.
+- Map embed of Rosebank International's HQ on the Contact page, as the organisation is fictional (replaces the placeholder image from Part 1).
+- `robots.txt` and `sitemap.xml` for bots and crawlers, plus supporting info files.
+- Contact form validation now shows an error message and highlights the affected field container.
+
+#### Changed
+
+- SEO overhaul: images renamed to be more descriptive, page titles updated, and every image reference updated site-wide.
+- Site colours updated to be warmer and more inviting.
+
+#### Fixed
+
+- Viewport heights corrected so the background canvas is no longer visible below the footer.
+
+### 2026-10-26 (Part 3)
+
+#### Added
+
+- `JS/donate.js`: popup thanking the visitor for their donation on the Donate page.
+- EmailJS integration on the Contact page's form.
+- EmailJS integration on the home page's volunteer sign-up: emails are sent to the address entered.
+
+#### Changed
+
+- `donate.html` updated to support the new donation behaviour.
+- "Adopt Now" button now links to the Adopt page.
+- Social links now point to Rosebank International's socials, as the website is fictitious.
   
 ## References
 
