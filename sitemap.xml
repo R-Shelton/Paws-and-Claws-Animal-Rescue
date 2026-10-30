@@ -19,28 +19,28 @@
 
     <!-- Home -->
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/index.html</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
     <!-- Adopt: the listing of animals available for adoption -->
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animals.html</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/animals.html</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/about.html</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/about.html</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/contact.html</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/contact.html</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/donate.html</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/donate.html</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
@@ -48,17 +48,17 @@
          animaldetail.html is left out on purpose: without an id it has no
          animal to show. -->
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animaldetail.html?id=1</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/animaldetail.html?id=1</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animaldetail.html?id=2</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/animaldetail.html?id=2</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
     <url>
-        <loc>https://REPLACE-WITH-YOUR-DOMAIN/animaldetail.html?id=3</loc>
+        <loc>https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/animaldetail.html?id=3</loc>
         <lastmod>2026-10-27</lastmod>
     </url>
 
