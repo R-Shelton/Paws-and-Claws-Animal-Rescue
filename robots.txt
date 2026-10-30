@@ -26,8 +26,6 @@ Disallow: /README.md
 # JS/animals-data.js and JS/animaldetail.js, and because the photos can
 # earn traffic through image search.
 
-# sitemap.xml lists every page of this site for crawlers. Uncomment the
-# line below once the site has a domain, using the same domain as the <loc>
-# entries in sitemap.xml. The directive takes a full absolute URL, so it
+# sitemap.xml lists every page of this site for crawlers. The directive takes a full absolute URL, so it
 # cannot be written as a relative path.
-# Sitemap: https://github.com/R-Shelton/Paws-and-Claws-Animal-Rescue/blob/main/sitemap.xml
+# Sitemap: https://r-shelton.github.io/Paws-and-Claws-Animal-Rescue/sitemap.xml
